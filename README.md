@@ -249,8 +249,8 @@ To ensure a consistent data flow and prevent the generation of visualisation cha
 •	offsetwar (126 missing)
 •	battle_deaths (126 missing)
 •	civilian_deaths (126 missing)
-•	Armed Forces Personnel (128 missing)
-•	Prevalence of Undernourishment (190 missing)
+•	Military Expenditure (128 missing)
+
 
 #### Check for Missing Values
 ```
