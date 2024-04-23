@@ -218,4 +218,17 @@ wdi_data <- wdi_data %>%
 ```
 #### Convert the 'year' Column in the 'df' DataFrame to Integer and Perform Data Merging
 ```
+# Convert the 'year' column in dataframe 'df' to integer type
+df$year <- as.integer(df$year)
+
+# Merge dataframe 'df' with dataframe 'wdi_data' based on the common columns 'country' and 'year', storing the result in dataframe 'df2'
+df2 <- left_join(df, wdi_data, by = c("country", "year"))
+
+# Write the merged dataframe 'df2' to a CSV file named 'df2.csv', excluding row names
+write.csv(df2, file = "df2.csv", row.names = FALSE)
+
+# Display the first few rows of the merged dataframe 'df2'
+head(df2)
+```
+<img width="735" alt="6" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/994f0b36-a4d6-4ff3-8c13-71e05769a06c">
 
