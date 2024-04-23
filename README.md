@@ -303,7 +303,7 @@ print(Coordinates)
 
 The scatter plot presents data on the Polity2 scores of countries in Sub-Saharan Africa. Notably, countries including Eswatini, Eritrea, Gambia, Mauritania, Togo, Chad, Uganda, Ethiopia, Sudan, Angola, Zimbabwe and Rwanda have maintained autocratic forms of government from 2002 to 2020. These nations appear to have continued to embrace autocratic leadership, which heavily influences the lives of their citizens. It is plausible that these countries are governed by one-party systems or military juntas, allowing their leaders to steadily consolidate power. As a result, adjustments in their legal frameworks have been made to restrict political freedoms and human rights, creating a false appearance of legitimacy for autocratic rule. This type of autocratic governance may have imposed hardships on the citizens and limited opportunities for emigration from these nations. Various factors, such as economic constraints, fear of potential repercussions, strong social and familial ties, limited access to unbiased information, strict immigration policies and aversion to risk could contribute to discouraging migration.
 
-#### Polity2 vs Population
+### Polity2 vs Population
 ```
 # Filter df2 for the year 2002
 df2_2002 <- df2 %>% filter(year == 2002)
@@ -354,3 +354,24 @@ print(scatterplot_2020)
 <img width="525" alt="10" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/231f2f84-c073-4adc-873d-94d9ab4a035b">
 
 Over the years, countries with lower Polity2 scores (ranging from -10 to 0) have consistently experienced slower GDP growth between 2002 and 2020. On the other hand, nations with higher Polity2 scores (ranging from 0 to 10) have seen stronger GDP growth. This difference in economic performance may be because countries with lower scores have limited political freedom and transparency. This can discourage people from leaving these countries and make it less attractive for investors to do business there due to the unfavourable political climate. In contrast, countries with democratic governments tend to have more stable political systems and a better environment for business. This attracts more business owners and investors, ultimately boosting the economy and leading to stronger GDP growth. Another potential explanation for the variations in GDP growth among countries with lower Polity2 scores may be linked to increased income inequality, possibly stemming from progressive tax policies. Notably, increased economic freedom tends to result in reduced taxation and relaxation of regulations.
+
+### Polity2 vs Total GDP
+```
+# Create a scatter plot for polity2 vs. total_gdp in millions of USD
+scatter_plotGDP <- ggplot(data = df2, aes(x = polity2, y = total_gdp / 1e6)) +  # Divide by 1e6 to convert to millions
+  geom_point(aes(color = ifelse(polity2 >= -10 & polity2 <= 0, "Highlighted", "Other")), size = 2) +  # Highlight condition and reduce point size
+  labs(x = "Polity2", y = "Total GDP (Millions USD)") +  
+  ggtitle("") +
+  scale_y_continuous(labels = scales::comma_format(scale = 1e-6)) +  # Format y-axis labels in millions
+  scale_color_manual(values = c("Highlighted" = "red", "Other" = "black"))+
+  theme(legend.position = "none") 
+
+# Print the scatter plot
+print(scatter_plotGDP)
+```
+<img width="524" alt="11" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/09536caf-82ba-42f7-b92d-b79192860511">
+
+More often than not, nations marked by lower Polity2 scores, indicative of autocratic governance, become entangled in the cycle of conflict. This predicament is aggravated by their minimal GDP income levels, which frequently coincide with a surge in civil unrest. These conflicts are further exacerbated by the diversion of public resources (Rice S.E et al., 2006). The correlation between diminished income per capita and an elevated susceptibility to conflict risk is evident, rendering such nations particularly susceptible to the emergence of insurgent groups. As a consequence, a significant portion of their budget must be allocated to military expenditure to suppress these uprisings. Contradictorily, heightened levels of military spending contribute to a further deterioration in the overall well-being of the nation. This assertion finds validation in the research conducted by Goshu and Yimer (2017), which emphasises that nations characterised by severely limited food supplies also exhibit reduced levels of agricultural production, a diminished industrial GDP, and elevated military outlays. Furthermore, military expenditure and annual inflation rates, serving as proxies for economic access to food, have been posited to depress the national per capita food supply. This phenomenon can be attributed, in part, to the prevalence of war and civil strife, which have depleted resources that could otherwise be utilised for food production.
+
+
+
