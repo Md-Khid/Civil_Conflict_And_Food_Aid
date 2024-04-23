@@ -235,5 +235,6 @@ write.csv(df2, file = "df2.csv", row.names = FALSE)
 # Display the first few rows of the merged dataframe 'df2'
 head(df2)
 ```
-<img width="735" alt="6" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/994f0b36-a4d6-4ff3-8c13-71e05769a06c">
+
+<img width="686" alt="5" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/a7e98a28-7bbe-4829-b323-c5cf298cd016">
 
