@@ -36,3 +36,8 @@ The dataset analysed in this study covers countries located in the SSA region ov
 | inflation<sup>4</sup>                       | Inflation, GDP deflator (annual %)                                            |                                                                                                             |
 | population<sup>4</sup>                    | Population, total                                                              |                                                                                                             |
 | polity2<sup>5</sup>                         | Polity2 score (-10 to 10), where -10 for most autocratic regime and 10 for most democratic regime | [Polity IV study database](https://www.systemicpeace.org/politystudy.html)<sup>5</sup>                              |
+
+
+
+## Software Platform
+The data quality check, cleaning process, and visualisation creation and analysis for this assignment will be conducted using the RStudio platform version 2023.06.1, Build 524.
