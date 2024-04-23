@@ -6,7 +6,7 @@ The intricate relationship between civil conflicts in Sub-Saharan Africa (SSA) a
 
 Within this multifaceted context, emergency food aid serves a multifunctional role and is utilised by various stakeholders, including governments, rebel groups and international organisations. It functions as a tool for conflict prevention, management or even exploitation. This study aims to elucidate the nuanced and occasionally intricate interactions between emergency food aid and civil conflict in SSA. Utilising data spanning an 18-year period from 2002 to 2020, this study will employ various visualisation techniques to generate meaningful insights, fostering a comprehensive understanding of the relationship between conflict and food aid in the SSA region.
 
-## Data
+## Data Dictionary
 The dataset analysed in this study covers countries located in the SSA region over an 18-year period from 2002 to 2020. It includes data from a total of 54 countries within the SSA region encompassing a wide range of variables related to civil conflicts, natural disasters, economic indicators and political circumstances. The table below outlines the variables of dataset followed by a brief description of the data.
 
 | Variable Name       | Variable Labels                                                                 | Source                                                                                                      |
@@ -41,7 +41,7 @@ The dataset analysed in this study covers countries located in the SSA region ov
 ## Software Platform
 The data quality check, cleaning process and visualisation creation and analysis for this study will be conducted using the RStudio platform version 2023.06.1, Build 524.
 
-## Setting Up the Working Directory and Loading Data
+## Set Up Working Directory and Loading Data
 
 ### Set Directory
 ```
@@ -56,4 +56,20 @@ df  <-  read_excel("FoodAid.xlsx")
 ```
 install.packages(c("stringr","dplyr", "tidyr", "ggplot2", "patchwork","tidyverse", "WDI","ggmap","leaflet", "ggrepel","scales"))
 ```
+## Data Management
+a.  Examine the Dataset
+
+Based on the data [dictionary](#data-dictionary), certain variables represent the cumulative totals of various distinct variables. For this reason, it is important to consider the following aspects:
+
+i.  The "overall_conflict" variable denotes the aggregate of both the "minor_conflict" and "major_conflict" variables.
+
+ii. "Total_affected_disasters" corresponds to the summation of "affected_disasters" and "homeless_disasters" variables.
+
+iii. "Total_affected_othercountries" is derived from the summation of "total_affected_neighbours," "total_affected_non_neighbours," and "nda_other_region" variables.
+
+It should be noted that these sets of variables may not be compatible for simultaneous utilisation during the data exploration phase, as doing so may impede the attainment of accurate visualisation representation.
+
+b.  Data Structure
+
+Transforming the dataset into an R data frame results in the generation of 798 observations encompassing 25 variables. Analysing the data's structure reveals that all the variables are predominantly numeric in nature, except for "country," which is designated as a character variable, and "year," which is formatted as a date and time
 
