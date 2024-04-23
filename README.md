@@ -299,3 +299,55 @@ print(Coordinates)
 ```
 <img width="698" alt="8" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/89bb55e8-7d00-4aaa-9f6d-22d41b15088c">
 
+## Data Findings
+
+The scatter plot presents data on the Polity2 scores of countries in Sub-Saharan Africa. Notably, countries including Eswatini, Eritrea, Gambia, Mauritania, Togo, Chad, Uganda, Ethiopia, Sudan, Angola, Zimbabwe and Rwanda have maintained autocratic forms of government from 2002 to 2020. These nations appear to have continued to embrace autocratic leadership, which heavily influences the lives of their citizens. It is plausible that these countries are governed by one-party systems or military juntas, allowing their leaders to steadily consolidate power. As a result, adjustments in their legal frameworks have been made to restrict political freedoms and human rights, creating a false appearance of legitimacy for autocratic rule. This type of autocratic governance may have imposed hardships on the citizens and limited opportunities for emigration from these nations. Various factors, such as economic constraints, fear of potential repercussions, strong social and familial ties, limited access to unbiased information, strict immigration policies and aversion to risk could contribute to discouraging migration.
+
+```
+# Filter df2 for the year 2002
+df2_2002 <- df2 %>% filter(year == 2002)
+
+# Filter df2 for the year 2020
+df2_2020 <- df2 %>% filter(year == 2020)
+
+# Determine the y-axis limits based on both 2002 and 2020 data
+y_axis_limits <- range(df2_2002$population / 1e6, df2_2020$population / 1e6)
+
+# Create the scatter plot for year 2002 with labels for countries with polity2 values from 0 to -10
+scatterplot_2002 <- ggplot(data = df2_2002, aes(x = polity2, y = population / 1e6, label = country)) +
+  geom_point() +
+  labs(x = "Polity2", y = "Population (in millions)") +
+  ggtitle("Year 2002") +
+  geom_text_repel(
+    aes(x = polity2, y = population / 1e6),
+    data = df2_2002 %>% filter(polity2 >= -10 & polity2 <= 0),
+    size = 2,
+    box.padding = 0.5
+  ) +
+  scale_y_continuous(labels = comma_format(), limits = y_axis_limits)  # Set y-axis limits
+
+# Create the scatter plot for year 2020 with labels for countries with polity2 values from 0 to -10
+scatterplot_2020 <- ggplot(data = df2_2020, aes(x = polity2, y = population / 1e6, label = country)) +
+  geom_point(aes(color = ifelse(polity2 >= -10 & polity2 <= 0, "Highlighted", "Other")),
+             size = 2) +
+  labs(x = "Polity2", y = "Population (in millions)") +
+  ggtitle("Year 2020") +
+  geom_text_repel(
+    aes(x = polity2, y = population / 1e6),
+    data = df2_2020 %>% filter(polity2 >= -10 & polity2 <= 0),
+    size = 2,
+    box.padding = 0.5
+  ) +
+  scale_color_manual(values = c("Highlighted" = "red", "Other" = "black")) +
+  theme(legend.position = "none") 
+
+# Print the scatter plots separately for year 2002 and 2020
+print(scatterplot_2002)
+print(scatterplot_2020)
+```
+
+<img width="524" alt="9" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/fae0b6a2-a0a4-442b-8b2f-f6907bd5b299">
+
+<img width="521" alt="10" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/a108cd38-d135-4ba9-83cd-02196eb3dc41">
+
+Over the years, countries with lower Polity2 scores (ranging from -10 to 0) have consistently experienced slower GDP growth between 2002 and 2020. On the other hand, nations with higher Polity2 scores (ranging from 0 to 10) have seen stronger GDP growth. This difference in economic performance may be because countries with lower scores have limited political freedom and transparency (Nazirou et al., 2022). This can discourage people from leaving these countries and make it less attractive for investors to do business there due to the unfavourable political climate. In contrast, countries with democratic governments tend to have more stable political systems and a better environment for business. This attracts more business owners and investors, ultimately boosting the economy and leading to stronger GDP growth. Another potential explanation for the variations in GDP growth among countries with lower Polity2 scores may be linked to increased income inequality, possibly stemming from progressive tax policies. Notably, increased economic freedom tends to result in reduced taxation and relaxation of regulations.
