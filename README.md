@@ -69,13 +69,16 @@ iii. "Total_affected_othercountries" is derived from the summation of "total_aff
 
 It should be noted that these sets of variables may not be compatible for simultaneous utilisation during the data exploration phase, as doing so may impede the attainment of accurate visualisation representation.
 
+b.  Data Structure
+
+Transforming the dataset into an R data frame results in the generation of 798 observations encompassing 25 variables. Analysing the data's structure reveals that all the variables are predominantly numeric in nature, except for "country," which is designated as a character variable, and "year," which is formatted as a date and time.
+
 ```
 colnames(df)
 head(df)
 str(df)
 ```
 
-b.  Data Structure
+<img width="491" alt="1" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/f1ea89ea-fa0a-4e44-ade6-27649935320b">
 
-Transforming the dataset into an R data frame results in the generation of 798 observations encompassing 25 variables. Analysing the data's structure reveals that all the variables are predominantly numeric in nature, except for "country," which is designated as a character variable, and "year," which is formatted as a date and time
 
