@@ -200,3 +200,22 @@ View(wdi_data)
 ```
 <img width="724" alt="5" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/c3d49050-fefd-45e6-8b28-ec1db56c6737">
 
+### e.	Merging Data
+The country names in the World Development Indicators (WDI) dataset will be renamed to match the names in the existing dataset to ensure accurate country identification. Numerical values such as ‘2002’ will be extracted from the ‘year’ column in the existing dataset and converted into integers for standardisation. Both datasets will be merged using the ‘country’ and ‘year’ columns as the basis for identification.
+
+#### Data Transformation for Merging WDI Data
+```
+# Rename specific countries in the dataset to match common naming conventions
+wdi_data <- wdi_data %>%
+  mutate(
+    country = case_when(
+      country == "Congo, Rep." ~ "Congo",  # Change "Congo, Rep." to "Congo"
+      country == "Congo, Dem. Rep." ~ "Democratic Republic of the Congo",  # Change "Congo, Dem. Rep." to "Democratic Republic of the Congo"
+      country == "Gambia, The" ~ "Gambia",  # Change "Gambia, The" to "Gambia"
+      TRUE ~ country  # Keep other values unchanged
+    )
+  )
+```
+#### Convert the 'year' Column in the 'df' DataFrame to Integer and Perform Data Merging
+```
+
