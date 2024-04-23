@@ -303,6 +303,7 @@ print(Coordinates)
 
 The scatter plot presents data on the Polity2 scores of countries in Sub-Saharan Africa. Notably, countries including Eswatini, Eritrea, Gambia, Mauritania, Togo, Chad, Uganda, Ethiopia, Sudan, Angola, Zimbabwe and Rwanda have maintained autocratic forms of government from 2002 to 2020. These nations appear to have continued to embrace autocratic leadership, which heavily influences the lives of their citizens. It is plausible that these countries are governed by one-party systems or military juntas, allowing their leaders to steadily consolidate power. As a result, adjustments in their legal frameworks have been made to restrict political freedoms and human rights, creating a false appearance of legitimacy for autocratic rule. This type of autocratic governance may have imposed hardships on the citizens and limited opportunities for emigration from these nations. Various factors, such as economic constraints, fear of potential repercussions, strong social and familial ties, limited access to unbiased information, strict immigration policies and aversion to risk could contribute to discouraging migration.
 
+#### Polity2 vs Population
 ```
 # Filter df2 for the year 2002
 df2_2002 <- df2 %>% filter(year == 2002)
@@ -345,8 +346,10 @@ scatterplot_2020 <- ggplot(data = df2_2020, aes(x = polity2, y = population / 1e
 print(scatterplot_2002)
 print(scatterplot_2020)
 ```
-
+#### Yr.2002
 <img width="524" alt="9" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/1929b2c4-5475-48f1-b2d2-c05e26535803">
+
+#### Yr.2020
 
 <img width="525" alt="10" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/231f2f84-c073-4adc-873d-94d9ab4a035b">
 
