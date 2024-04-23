@@ -81,4 +81,31 @@ str(df)
 
 <img width="491" alt="1" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/f1ea89ea-fa0a-4e44-ade6-27649935320b">
 
+c.  Data Transformation
+
+To facilitate the creation of visualisation charts for the assignment, the following data processes will be performed:
+
+i.  The conversion of numeric variables, namely 'overall_conflict,' 'minor_conflict,' 'major_conflict,' 'onsetwar,' 'offsetwar,' and 'polity2,' into categorical factors.
+
+ii. The creation of new variables such as "total_food_aid" (emergency_food_aid + non_emergency_food_aid), "percent_total_food_aid_of_total_aid" (total_food_aid / total_aid), and "total_gdp" (gdp_per_capita \* population).
+
+```
+```{r}
+df <- df %>%
+  mutate(
+    overall_conflict = factor(overall_conflict, levels = c(0, 1), labels = c("No", "Yes")),
+    minor_conflict = factor(minor_conflict, levels = c(0, 1), labels = c("No", "Yes")),
+    major_conflict = factor(major_conflict, levels = c(0, 1), labels = c("No", "Yes")),
+    onsetwar = factor(onsetwar, levels = c(0, 1), labels = c("No", "Yes")),
+    offsetwar = factor(offsetwar, levels = c(0, 1), labels = c("No", "Yes")),
+    
+    # Create categories for "polity2" scores
+    polity2_category = cut(polity2,
+                           breaks = c(-10, -6, 0, 5, 9, 10),
+                           labels = c("Highly Autocratic", "Moderately Autocratic", "Neutral/Transitional", "Moderately Democratic", "Highly Democratic"),
+                           include.lowest = TRUE)
+  )
+```
+<img width="826" alt="2" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/8ffdc281-a75c-4c85-8a45-583273c07eb8">
+
 
