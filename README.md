@@ -82,7 +82,7 @@ str(df)
 
 <img width="491" alt="1" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/f1ea89ea-fa0a-4e44-ade6-27649935320b">
 
-c.  Data Transformation
+### c.  Data Transformation
 
 To facilitate the creation of visualisation charts for the assignment, the following data processes will be performed:
 
