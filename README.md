@@ -151,12 +151,16 @@ ii. The creation of new variables such as "total_food_aid" (emergency_food_aid +
 
 #### Create New Variables
 ```
+# Mutate the dataframe to calculate the total food aid by summing emergency and non-emergency food aid
+# Calculate the percentage of total food aid compared to total aid
+# Compute the total GDP by multiplying GDP per capita with population
 df <- df %>%
   mutate(
     total_food_aid = emergency_food_aid + non_emergency_food_aid,
     percent_total_food_aid_of_total_aid = total_food_aid / total_aid,
     total_gdp = gdp_per_capita * population
   )
+
 ```
 <img width="583" alt="3" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/079d8e15-8254-4e1c-a3bc-c89ce492fb19">
 
