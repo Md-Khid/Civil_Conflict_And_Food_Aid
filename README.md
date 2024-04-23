@@ -160,7 +160,8 @@ df <- df %>%
   )
 
 ```
-<img width="583" alt="3" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/079d8e15-8254-4e1c-a3bc-c89ce492fb19">
+<img width="1124" alt="3" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/c8c8d84e-1485-4d43-990d-484ac231fe4c">
+
 
 #### Extract the Year from the ‘year’ Column for Data Merging 
 
