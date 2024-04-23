@@ -88,8 +88,6 @@ To facilitate the creation of visualisation charts for the assignment, the follo
 
 i.  The conversion of numeric variables, namely 'overall_conflict,' 'minor_conflict,' 'major_conflict,' 'onsetwar,' 'offsetwar,' and 'polity2,' into categorical factors.
 
-ii. The creation of new variables such as "total_food_aid" (emergency_food_aid + non_emergency_food_aid), "percent_total_food_aid_of_total_aid" (total_food_aid / total_aid), and "total_gdp" (gdp_per_capita \* population).
-
 #### Convert numeric variables into Categorical factors
 ```
 df <- df %>%
@@ -108,6 +106,8 @@ df <- df %>%
   )
 ```
 <img width="826" alt="2" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/8ffdc281-a75c-4c85-8a45-583273c07eb8">
+
+ii. The creation of new variables such as "total_food_aid" (emergency_food_aid + non_emergency_food_aid), "percent_total_food_aid_of_total_aid" (total_food_aid / total_aid), and "total_gdp" (gdp_per_capita \* population).
 
 #### Create New Variables
 ```
