@@ -93,6 +93,7 @@ library(ggrepel)      # For adding text labels to ggplot2 plots
 library(scales)       # For scaling functions for ggplot2
 ```
 ## Data Management
+
 ### a.  Examine the Dataset
 
 Based on the data [dictionary](#data-dictionary), certain variables represent the cumulative totals of various distinct variables. For this reason, it is important to consider the following aspects:
