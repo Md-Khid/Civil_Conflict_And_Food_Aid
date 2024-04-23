@@ -57,7 +57,7 @@ df  <-  read_excel("FoodAid.xlsx")
 install.packages(c("stringr","dplyr", "tidyr", "ggplot2", "patchwork","tidyverse", "WDI","ggmap","leaflet", "ggrepel","scales"))
 ```
 ## Data Management
-a.  Examine the Dataset
+### a.  Examine the Dataset
 
 Based on the data [dictionary](#data-dictionary), certain variables represent the cumulative totals of various distinct variables. For this reason, it is important to consider the following aspects:
 
@@ -69,11 +69,11 @@ iii. "Total_affected_othercountries" is derived from the summation of "total_aff
 
 It should be noted that these sets of variables may not be compatible for simultaneous utilisation during the data exploration phase, as doing so may impede the attainment of accurate visualisation representation.
 
-b.  Data Structure
+### b.  Data Structure
 
 Transforming the dataset into an R data frame results in the generation of 798 observations encompassing 25 variables. Analysing the data's structure reveals that all the variables are predominantly numeric in nature, except for "country," which is designated as a character variable, and "year," which is formatted as a date and time.
 
-### Data Types
+#### Data Types
 ```
 colnames(df)
 head(df)
@@ -90,7 +90,7 @@ i.  The conversion of numeric variables, namely 'overall_conflict,' 'minor_confl
 
 ii. The creation of new variables such as "total_food_aid" (emergency_food_aid + non_emergency_food_aid), "percent_total_food_aid_of_total_aid" (total_food_aid / total_aid), and "total_gdp" (gdp_per_capita \* population).
 
-### Convert numeric variables into Categorical factors
+#### Convert numeric variables into Categorical factors
 ```
 df <- df %>%
   mutate(
@@ -109,7 +109,7 @@ df <- df %>%
 ```
 <img width="826" alt="2" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/8ffdc281-a75c-4c85-8a45-583273c07eb8">
 
-### Create New Variables
+#### Create New Variables
 ```
 df <- df %>%
   mutate(
