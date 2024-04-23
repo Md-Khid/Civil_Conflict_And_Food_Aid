@@ -2,9 +2,9 @@
 
 ## Introduction
 
-The intricate relationship between civil conflicts in Sub-Saharan Africa (SSA) and the distribution of emergency food aid is a multifaceted and interconnected matter. This study seeks to delve into this complex interplay. SSA, characterised by its diverse geography and intricate socio-political dynamics, consistently witnesses a recurring cycle of civil conflicts, each with its distinct triggers and consequences. Frequently, these conflicts are underpinned by common factors such as grievances, wealth and resource disparities, and food insecurity. Notably, food scarcity emerges as a prominent contributing factor, exacerbating conditions conducive to conflict and posing significant challenges for conflict resolution and post-conflict recovery.
+The intricate relationship between civil conflicts in Sub-Saharan Africa (SSA) and the distribution of emergency food aid is a multifaceted and interconnected matter. This assignment seeks to delve into this complex interplay. SSA, characterised by its diverse geography and intricate socio-political dynamics, consistently witnesses a recurring cycle of civil conflicts, each with its distinct triggers and consequences. Frequently, these conflicts are underpinned by common factors such as grievances, wealth and resource disparities and food insecurity (Rice S.E et al., 2006). Notably, food scarcity emerges as a prominent contributing factor, exacerbating conditions conducive to conflict and posing significant challenges for conflict resolution and post-conflict recovery.
 
-Within this multifaceted context, emergency food aid serves a multifunctional role and is utilised by various stakeholders, including governments, rebel groups and international organisations. It functions as a tool for conflict prevention, management or even exploitation. This study aims to elucidate the nuanced and occasionally intricate interactions between emergency food aid and civil conflict in SSA. Utilising data spanning an 18-year period from 2002 to 2020, this study will employ various visualisation techniques to generate meaningful insights, fostering a comprehensive understanding of the relationship between conflict and food aid in the SSA region.
+Within this multifaceted context, emergency food aid serves a multifunctional role and is utilised by various stakeholders, including governments, rebel groups and international organisations. It functions as a tool for conflict prevention, management, or even exploitation (Mary S et al., 2019). This assignment aims to elucidate the nuanced and occasionally intricate interactions between emergency food aid and civil conflict in SSA. Utilising data spanning an 18-year period from 2002 to 2020, this assignment will employ various visualisation techniques to generate meaningful insights, fostering a comprehensive understanding of the relationship between conflict and food aid in the SSA region.
 
 ## Data Dictionary
 The dataset analysed in this study covers countries located in the SSA region over an 18-year period from 2002 to 2020. It includes data from a total of 54 countries within the SSA region encompassing a wide range of variables related to civil conflicts, natural disasters, economic indicators and political circumstances. The table below outlines the variables of dataset followed by a brief description of the data.
@@ -108,7 +108,7 @@ It should be noted that these sets of variables may not be compatible for simult
 
 ### b.  Data Structure
 
-Transforming the dataset into an R data frame results in the generation of 798 observations encompassing 25 variables. Analysing the data's structure reveals that all the variables are predominantly numeric in nature, except for "country," which is designated as a character variable, and "year," which is formatted as a date and time.
+Transforming the dataset into an R data frame results in the generation of 798 observations encompassing 25 variables. Analysing the data's structure reveals that all the variables are predominantly numeric in nature, except for "country," which is designated as a character variableand "year," which is formatted as a date and time.
 
 #### Data Types
 ```
@@ -145,7 +145,7 @@ df <- df %>%
 ```
 <img width="824" alt="2" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/5e93efdd-de35-457f-a7bb-45b3a457c34a">
 
-ii. The creation of new variables such as "total_food_aid" (emergency_food_aid + non_emergency_food_aid), "percent_total_food_aid_of_total_aid" (total_food_aid / total_aid), and "total_gdp" (gdp_per_capita \* population).
+ii. The creation of new variables such as "total_food_aid" (emergency_food_aid + non_emergency_food_aid), "percent_total_food_aid_of_total_aid" (total_food_aid / total_aid)and "total_gdp" (gdp_per_capita \* population).
 
 #### Create New Variables
 ```
@@ -251,6 +251,7 @@ df2 <- df2 %>%
 
 ### f.	Missing Values
 To ensure a consistent data flow and prevent the generation of visualisation chart errors, missing values will be replaced with ‘NA’ to maintain the integrity of the merged dataset, making it more suitable for analysis and interpretation. Therefore, it is important to consider the following variables, each of which has more than 100 missing rows, during the exploratory data analysis phase:
+
 •	onsetwar (126 missing)
 •	offsetwar (126 missing)
 •	battle_deaths (126 missing)
@@ -446,7 +447,7 @@ print(kernel_density_plot)
 
 Considering the strong military forces of these autocratic nations, they are also likely to employ their authority in sustaining their political influence and dominance. Such endeavours to secure control over food aid are liable to provoke tensions within these nations. Consequently, the provision of emergency aid could exacerbate localised conflicts and instigate wars (Dippold, E. C., 2016).  To support this claim, an analysis of the kernel density plot reveals insights into the complex connection between emergency food assistance and the dynamics of armed conflict in the SSA region.
 
-To begin with, the plot unveils a clustering of emergency food aid in specific areas of SSA. These regions demonstrate a heightened distribution of aid, indicating their vulnerability to food insecurity and the associated socio-economic challenges. This concentration underscores the imperative nature of targeted humanitarian interventions in these susceptible regions. Secondly, it becomes evident that once emergency food aid surpasses a certain threshold, the likelihood of conflict escalation increases. This observation implies that, in some areas, while emergency food aid may alleviate immediate food shortages, it fails to address the underlying causes of conflict. Conflict continues to persist, and in some instances, intensifies despite the relief efforts.
+To begin with, the plot unveils a clustering of emergency food aid in specific areas of SSA. These regions demonstrate a heightened distribution of aid, indicating their vulnerability to food insecurity and the associated socio-economic challenges. This concentration underscores the imperative nature of targeted humanitarian interventions in these susceptible regions. Secondly, it becomes evident that once emergency food aid surpasses a certain threshold, the likelihood of conflict escalation increases. This observation implies that, in some areas, while emergency food aid may alleviate immediate food shortages, it fails to address the underlying causes of conflict. Conflict continues to persistand in some instances, intensifies despite the relief efforts.
 
 A third noteworthy observation arises from the overlap in the density curves for the “Yes” and “No” categories of overall conflict within the mid-range of emergency food aid values. This overlap signifies intricate conflict dynamics. In practical terms, this may suggest that neighbouring regions experiencing similar levels of aid may exhibit varying degrees of conflict. Some areas might witness sporadic or localised conflicts, while others maintain relative stability.
 
@@ -560,7 +561,7 @@ In order to contextualise these resource-related conflicts, it is noteworthy to 
 
 The analysis of Sub-Saharan African countries from 2002 to 2020 uncovers how food aid, though well-intentioned, can unintentionally exacerbate conflicts. Key findings shed light on these complex dynamics:
 
-Firstly, many Sub-Saharan African nations, such as Eswatini, Eritrea, Gambia, Mauritania, Togo, Chad, Uganda, Ethiopia, Sudan, Angola, Zimbabwe, and Rwanda, are governed by autocratic regimes. These regimes limit political freedoms, potentially discouraging emigration.
+Firstly, many Sub-Saharan African nations, such as Eswatini, Eritrea, Gambia, Mauritania, Togo, Chad, Uganda, Ethiopia, Sudan, Angola, Zimbabweand Rwanda, are governed by autocratic regimes. These regimes limit political freedoms, potentially discouraging emigration.
 
 Secondly, countries with lower Polity2 scores (indicating limited political freedom) experience slower GDP growth. This discourages emigration and deters investors. In contrast, democratically governed nations enjoy stability, attracting investment and fostering economic growth.
 
@@ -570,7 +571,7 @@ Moreover, emergency food aid allocation reveals disparities, with certain region
 
 Additionally, when food aid surpasses a certain threshold, conflict escalation likelihood increases, suggesting that addressing food insecurity alone may not suffice. Uneven aid allocation heightens conflict risks in resource-limited regions, necessitating fairer distribution strategies. In essence, autocratic governance in resource-rich regions creates an environment where aid access equates to economic and political power. Armed groups exploit humanitarian assistance, sparking disputes and internal conflicts.
 
-To address food insecurity in conflict-prone regions, a comprehensive approach is imperative. Initiatives should prioritise good governance, political freedom, and economic stability to break the cycle of conflict and ensure equitable resource distribution. As such, comprehensive strategies addressing root causes are crucial to minimising conflicts in the Sub-Saharan Africa region.
+To address food insecurity in conflict-prone regions, a comprehensive approach is imperative. Initiatives should prioritise good governance, political freedomand economic stability to break the cycle of conflict and ensure equitable resource distribution. As such, comprehensive strategies addressing root causes are crucial to minimising conflicts in the Sub-Saharan Africa region.
 
 
 ## References
