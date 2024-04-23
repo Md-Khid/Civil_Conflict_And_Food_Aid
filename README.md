@@ -45,16 +45,49 @@ The data quality check, cleaning process and visualisation creation and analysis
 
 ### Set Directory
 ```
+# Setting the root directory path for data files
 root.dir = ""<your_directory_here>""
 ```
 ### Load Data
 ```
+# Load readxl package for reading Excel files
 library(readxl)
-df  <-  read_excel("FoodAid.xlsx")
+
+# Read Excel file named "FoodAid.xlsx" and store as 'df' dataframe
+df <- read_excel("FoodAid.xlsx")
+
 ```
 ### Install Packages
 ```
-install.packages(c("stringr","dplyr", "tidyr", "ggplot2", "patchwork","tidyverse", "WDI","ggmap","leaflet", "ggrepel","scales"))
+# Install necessary R packages for data manipulation, visualisation and mapping
+install.packages(c("stringr",     # For string manipulation functions
+                   "dplyr",       # For data manipulation functions
+                   "tidyr",       # For data tidying functions
+                   "ggplot2",     # For creating visualisations using grammar of graphics
+                   "patchwork",   # For arranging multiple ggplots into single figure
+                   "tidyverse",   # Meta-package that loads several packages for data science tasks
+                   "WDI",         # For accessing World Bank data
+                   "ggmap",       # For creating maps using Google Maps
+                   "leaflet",     # For creating interactive maps
+                   "ggrepel",     # For adding non-overlapping text labels to ggplot2 plots
+                   "scales"))     # For modifying axis scales and breaks in ggplot2
+
+```
+```
+### Install Libraries
+```
+# Load necessary libraries for data manipulation and visualisation
+library(stringr)      # For string manipulation functions
+library(dplyr)        # For data manipulation functions
+library(tidyr)        # For data tidying functions
+library(ggplot2)      # For creating visualisations
+library(patchwork)    # For combining multiple ggplot2 plots
+library(tidyverse)    # For data manipulation and visualisation functions
+library(WDI)          # For accessing World Bank data
+library(ggmap)        # For creating maps with ggplot2
+library(leaflet)      # For creating interactive maps
+library(ggrepel)      # For adding text labels to ggplot2 plots
+library(scales)       # For scaling functions for ggplot2
 ```
 ## Data Management
 ### a.  Examine the Dataset
@@ -75,8 +108,13 @@ Transforming the dataset into an R data frame results in the generation of 798 o
 
 #### Data Types
 ```
+# Retrieve the column names 
 colnames(df)
+
+# Display the first few rows 
 head(df)
+
+# Provide summary of data structure
 str(df)
 ```
 
@@ -90,6 +128,7 @@ i.  The conversion of numeric variables, namely 'overall_conflict,' 'minor_confl
 
 #### Convert numeric variables into Categorical factors
 ```
+# Convert variables to factors with "No" and "Yes" labels
 df <- df %>%
   mutate(
     overall_conflict = factor(overall_conflict, levels = c(0, 1), labels = c("No", "Yes")),
@@ -100,10 +139,11 @@ df <- df %>%
     
     # Create categories for "polity2" scores
     polity2_category = cut(polity2,
-                           breaks = c(-10, -6, 0, 5, 9, 10),
-                           labels = c("Highly Autocratic", "Moderately Autocratic", "Neutral/Transitional", "Moderately Democratic", "Highly Democratic"),
-                           include.lowest = TRUE)
+                           breaks = c(-10, -6, 0, 5, 9, 10),  # Define breaks for categorization
+                           labels = c("Highly Autocratic", "Moderately Autocratic", "Neutral/Transitional", "Moderately Democratic", "Highly Democratic"),  # Define labels for each category
+                           include.lowest = TRUE)  # Include lowest value in the first interval
   )
+
 ```
 <img width="826" alt="2" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/8ffdc281-a75c-4c85-8a45-583273c07eb8">
 
