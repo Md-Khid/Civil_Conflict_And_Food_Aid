@@ -198,7 +198,7 @@ wdi_data <- WDI(
 # View the retrieved data
 View(wdi_data)
 ```
-<img width="724" alt="5" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/c3d49050-fefd-45e6-8b28-ec1db56c6737">
+<img width="664" alt="5" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/07091986-c867-4cbf-bfc7-3e16a0300859">
 
 ### e.	Merging Data
 The country names in the World Development Indicators (WDI) dataset will be renamed to match the names in the existing dataset to ensure accurate country identification. Numerical values such as ‘2002’ will be extracted from the ‘year’ column in the existing dataset and converted into integers for standardisation. Both datasets will be merged using the ‘country’ and ‘year’ columns as the basis for identification.
