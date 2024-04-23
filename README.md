@@ -40,4 +40,4 @@ The dataset analysed in this study covers countries located in the SSA region ov
 
 
 ## Software Platform
-The data quality check, cleaning process, and visualisation creation and analysis for this assignment will be conducted using the RStudio platform version 2023.06.1, Build 524.
+The data quality check, cleaning process and visualisation creation and analysis for this study will be conducted using the RStudio platform version 2023.06.1, Build 524.
