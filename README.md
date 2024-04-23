@@ -158,3 +158,12 @@ df <- df %>%
 ```
 <img width="583" alt="3" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/079d8e15-8254-4e1c-a3bc-c89ce492fb19">
 
+#### Extract the Year from the ‘year’ Column for Data Merging 
+
+```
+# Extract the first four characters from the 'year' column and create a new column called 'year'
+df <- df %>%
+  mutate(year = substr(year, 1, 4))
+```
+<img width="665" alt="4" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/5961f291-02fe-4dc5-b14c-c64a4c196012">
+
