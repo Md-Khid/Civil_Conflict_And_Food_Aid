@@ -403,17 +403,55 @@ print(box_plot)
 
 More often than not, nations marked by lower Polity2 scores, indicative of autocratic governance, become entangled in the cycle of conflict. This predicament is aggravated by their minimal GDP income levels, which frequently coincide with a surge in civil unrest. These conflicts are further exacerbated by the diversion of public resources (Rice S.E et al., 2006). The correlation between diminished income per capita and an elevated susceptibility to conflict risk is evident, rendering such nations particularly susceptible to the emergence of insurgent groups. As a consequence, a significant portion of their budget must be allocated to military expenditure to suppress these uprisings. Contradictorily, heightened levels of military spending contribute to a further deterioration in the overall well-being of the nation. This assertion finds validation in the research conducted by Goshu and Yimer (2017), which emphasises that nations characterised by severely limited food supplies also exhibit reduced levels of agricultural production, a diminished industrial GDP, and elevated military outlays. Furthermore, military expenditure and annual inflation rates, serving as proxies for economic access to food, have been posited to depress the national per capita food supply. This phenomenon can be attributed, in part, to the prevalence of war and civil strife, which have depleted resources that could otherwise be utilised for food production.
 
+### Emergency Food Aid by Onset of War
 
+```
+# Filter out NA values in the "onsetwar" variable
+df2_filtered <- df2[!is.na(df2$onsetwar), ]
 
+# Create a kernel density plot with a log-scale x-axis
+kernel_density_plot <- ggplot(df2_filtered, aes(x = emergency_food_aid, fill = onsetwar)) +
+  geom_density(alpha = 0.5) +  # Add a semi-transparent density plot
+  labs(x = "Emergency Food Aid", y = "Density") +  # Set axis labels
+  ggtitle("") +  # Set plot title
+  scale_fill_manual(values = c("Yes" = "red", "No" = "blue")) +  # Define colors
+  theme_minimal() + 
+  scale_x_log10()  # Set x-axis to log scale
 
+# Print the kernel density plot
+print(kernel_density_plot)
+```
+
+<img width="720" alt="1" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/f86569cc-044d-4641-9a09-ae043615880b">
 
 Considering the strong military forces of these autocratic nations, they are also likely to employ their authority in sustaining their political influence and dominance. Such endeavours to secure control over food aid are liable to provoke tensions within these nations. Consequently, the provision of emergency aid could exacerbate localised conflicts and instigate wars (Dippold, E. C., 2016).  To support this claim, an analysis of the kernel density plot reveals insights into the complex connection between emergency food assistance and the dynamics of armed conflict in the SSA region.
-
-
 
 To begin with, the plot unveils a clustering of emergency food aid in specific areas of SSA. These regions demonstrate a heightened distribution of aid, indicating their vulnerability to food insecurity and the associated socio-economic challenges. This concentration underscores the imperative nature of targeted humanitarian interventions in these susceptible regions. Moreover, it becomes evident that once emergency food aid surpasses a certain threshold, the likelihood of conflict escalation increases. This observation implies that, in some areas, while emergency food aid may alleviate immediate food shortages, it fails to address the underlying causes of conflict. Conflict continues to persist, and in some instances, intensifies despite the relief efforts.
 
 A third noteworthy observation arises from the overlap in the density curves for the “Yes” and “No” categories of overall conflict within the mid-range of emergency food aid values. This overlap signifies intricate conflict dynamics. In practical terms, this may suggest that neighbouring regions experiencing similar levels of aid may exhibit varying degrees of conflict. Some areas might witness sporadic or localised conflicts, while others maintain relative stability.
-Additionally, the plot highlights the uneven allocation of emergency food aid. Certain regions receive more substantial aid resources, while neighbouring areas with limited aid resources face heightened risks of conflict. This inequality underscores the imperative need for a thorough review of aid allocation strategies to ensure a fairer distribution and, consequently, the mitigation of conflicts.
+
+Additionally, the plot highlights the uneven allocation of emergency food aid. Certain regions receive more substantial aid resources, while neighbouring areas with limited aid resources face heightened risks of conflict. This inequality underscores the imperative need for a thorough review of aid allocation strategies to ensure a fairer distribution and consequently, the mitigation of conflicts.
 
 The correlation between increased levels of emergency food aid and an elevated risk of conflict underscores the complex relationship between resource scarcity and conflict in SSA. It implies that addressing food insecurity alone might not suffice in mitigating conflicts in regions grappling with deeply entrenched socio-political issues.
+
+### Emergency Food Aid by Overall Conflict
+
+```
+# Filter out NA values in the "onsetwar" variable
+df2_filtered <- df2[!is.na(df2$overall_conflict), ]
+
+# Create a kernel density plot with a logarithmic x-axis scale
+kernel_density_plot <- ggplot(df2_filtered, aes(x = emergency_food_aid, fill = overall_conflict)) +
+  geom_density(alpha = 0.5) +  # Add a semi-transparent density plot
+  labs(x = "Emergency Food Aid", y = "Density") +  # Set axis labels
+  ggtitle("") +  # Set plot title
+  scale_fill_manual(values = c("Yes" = "red", "No" = "blue")) +  # Define colors
+  theme_minimal() + 
+  scale_x_log10()  # Set x-axis to log scale
+
+# Print the kernel density plot
+print(kernel_density_plot)
+```
+<img width="720" alt="2" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/724bd415-7694-4245-b07b-197834c838b0">
+
+Regardless of the quantity of emergency food assistance provided, conflicts and wars remain an inevitability. This perspective finds support in Mary et al.’s 2016 research, which argues that humanitarian aid of this nature tends to perpetuate rather than resolve conflicts in affected regions. Moreover, the severity of casualties resulting from such conflicts worsens when the received food aid is insufficient, prompting nations to engage in warfare to secure limited emergency food supplies. These conflicts often involve high autocratic countries competing with rebel leaders or supporters for control over food distribution, diverting resources toward military preparations. The persistence of war in these autocratic nations can be attributed to their substantial military expenditures aimed at suppressing rebel uprisings. However, as earlier findings indicate, these nations consistently experience recurring cycles of civil conflicts, necessitating a significant portion of their budgets to be allocated to military spending for quelling these uprisings. This vulnerability to insurgent group emergence is particularly acute in autocratic nations, given their diminished industrial GDP.
