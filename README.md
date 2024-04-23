@@ -46,7 +46,7 @@ The data quality check, cleaning process and visualisation creation and analysis
 ### Set Directory
 ```
 # Set the root directory path 
-root.dir = ""<your_directory_here>""
+root.dir = "<your_directory_here>"
 ```
 ### Load Data
 ```
