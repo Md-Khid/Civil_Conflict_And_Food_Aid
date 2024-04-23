@@ -482,3 +482,77 @@ print(correlation_plot)
 <img width="720" alt="4" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/b39453ad-727c-4d93-a944-51fe10c859b7">
 
 Regardless of the quantity of emergency food assistance provided, conflicts and wars remain an inevitability. This perspective finds support in Mary et al.’s 2016 research, which argues that humanitarian aid of this nature tends to perpetuate rather than resolve conflicts in affected regions. Moreover, the severity of casualties resulting from such conflicts worsens when the received food aid is insufficient, prompting nations to engage in warfare to secure limited emergency food supplies. These conflicts often involve high autocratic countries competing with rebel leaders or supporters for control over food distribution, diverting resources toward military preparations. The persistence of war in these autocratic nations can be attributed to their substantial military expenditures aimed at suppressing rebel uprisings. However, as earlier findings indicate, these nations consistently experience recurring cycles of civil conflicts, necessitating a significant portion of their budgets to be allocated to military spending for quelling these uprisings. This vulnerability to insurgent group emergence is particularly acute in autocratic nations, given their diminished industrial GDP.
+
+### Number of Battle Deaths by Country
+```
+# Filter df2 for the year 2002
+df2_2002 <- df2[df2$year == 2002, ]
+
+# Create a basic map with a default view
+map <- leaflet() %>%
+  setView(lng = 12, lat = -8, zoom = 5) %>%
+  addTiles()
+
+# Define marker options for smaller markers
+small_marker_options <- markerOptions(radius = 3, fillOpacity = 0.7)
+
+# Iterate through the Coordinates dataset and add markers and labels for each country
+for (i in 1:nrow(Coordinates)) {
+  country_name <- Coordinates$Country[i]
+  country_lng <- Coordinates$Longitude[i]
+  country_lat <- Coordinates$Latitude[i]
+  
+  # Filter df2 for the specific country and year
+  df2_country <- df2_2002 %>%
+    filter(country == country_name)
+  
+  # Calculate the total battle deaths for the country
+  total_battle_deaths <- sum(df2_country$battle_deaths, na.rm = TRUE)
+  
+  # Check if battle deaths should be hidden
+  if (!is.na(total_battle_deaths) && total_battle_deaths > 1) {
+    
+    # Check if the country's polity2 value is within the range of 0 to -10
+    polity2_value <- df2_country$polity2[1]  # Assuming it's the same for all rows of the same country in 2002
+    if (!is.na(polity2_value) && polity2_value >= -10 && polity2_value <= 0) {
+      # Add a marker with custom color for countries in the specified polity2 range
+      map <- map %>%
+        addCircleMarkers(
+          lng = country_lng,
+          lat = country_lat,
+          radius = 10,  # Adjust the marker size
+          color = "red",  # You can customize the marker color here
+          fillOpacity = 0.7
+        )
+    } else {
+      # Add a smaller marker for countries outside the specified polity2 range
+      map <- map %>%
+        addCircleMarkers(
+          lng = country_lng,
+          lat = country_lat,
+          color = "blue",  # You can customize the marker color here
+          options = small_marker_options  # Use the smaller marker options
+        )
+    }
+    
+    # Add a label for the country with total battle deaths information displayed permanently (rounded to whole numbers)
+    label_text <- paste(country_name, ":", total_battle_deaths)
+    
+    map <- map %>%
+      addLabelOnlyMarkers(
+        lng = country_lng,
+        lat = country_lat,
+        label = label_text,
+        labelOptions = labelOptions(noHide = TRUE, direction = "auto")
+      )
+    
+  }
+}
+
+# Display the map
+map
+```
+![12](https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/48306fba-bf4d-42b3-833b-b34175dc3671)
+
+In order to contextualise these resource-related conflicts, it is noteworthy to observe that a considerable proportion of casualties arising from armed confrontations take place in nations characterised by authoritarian governance. Among the 11 nations with the highest documented battle fatalities resulting from internal strife, a noteworthy eight belong to the category of authoritarian regimes. These nations encompass Liberia, Côte d’Ivoire, Chad, Sudan, Uganda, Somalia, Rwanda, and Angola. In these particular countries, populations have frequently endured protracted periods of political oppression and violence. Consequently, autocratic leaders within these states may resort to coercive measures to sustain their control over the populace, thereby precipitating conflicts and resistance movements. Moreover, these nations are renowned for their abundant natural resources, which serve as potential sources of competition and conflict. In regions abundant in valuable resources, the control of aid access can translate into both economic and political influence for the warring factions. Therefore, highly armed nation groups may manipulate the allocation of humanitarian assistance to garner support or legitimation, thereby instigating disputes regarding aid allocation and distribution methods, ultimately leading to their own internal conflicts.
+
