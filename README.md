@@ -371,7 +371,46 @@ print(scatter_plotGDP)
 ```
 <img width="524" alt="11" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/09536caf-82ba-42f7-b92d-b79192860511">
 
+### Military Expenditure by Country
+```
+# Calculate the mean Military Expenditure by country and arrange in descending order
+df2_mean <- df2 %>%
+  group_by(country) %>%
+  summarize(mean_afp = mean(`Military Expenditure`, na.rm = TRUE)) %>%
+  arrange(desc(mean_afp))
+
+# Filter out rows with NA in polity2_category
+df2_filtered <- df2 %>%
+  filter(!is.na(polity2_category))
+
+# Create a box plot with fill based on polity2_category
+box_plot <- ggplot(data = df2_filtered, aes(x = factor(country, levels = df2_mean$country), 
+                                           y = `Military Expenditure` / 1e9,  # Convert to USD billion
+                                           fill = polity2_category)) +
+  geom_boxplot() +
+  labs(x = "Country", y = "Military Expenditure (USD billion)") +  
+  ggtitle("") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +  
+  labs(fill = "")
+
+# Print the box plot
+print(box_plot)
+```
+<img width="720" alt="1" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/61d2c03c-774c-48ab-9f7c-5345abd8185b">
+
 More often than not, nations marked by lower Polity2 scores, indicative of autocratic governance, become entangled in the cycle of conflict. This predicament is aggravated by their minimal GDP income levels, which frequently coincide with a surge in civil unrest. These conflicts are further exacerbated by the diversion of public resources (Rice S.E et al., 2006). The correlation between diminished income per capita and an elevated susceptibility to conflict risk is evident, rendering such nations particularly susceptible to the emergence of insurgent groups. As a consequence, a significant portion of their budget must be allocated to military expenditure to suppress these uprisings. Contradictorily, heightened levels of military spending contribute to a further deterioration in the overall well-being of the nation. This assertion finds validation in the research conducted by Goshu and Yimer (2017), which emphasises that nations characterised by severely limited food supplies also exhibit reduced levels of agricultural production, a diminished industrial GDP, and elevated military outlays. Furthermore, military expenditure and annual inflation rates, serving as proxies for economic access to food, have been posited to depress the national per capita food supply. This phenomenon can be attributed, in part, to the prevalence of war and civil strife, which have depleted resources that could otherwise be utilised for food production.
 
 
 
+
+
+Considering the strong military forces of these autocratic nations, they are also likely to employ their authority in sustaining their political influence and dominance. Such endeavours to secure control over food aid are liable to provoke tensions within these nations. Consequently, the provision of emergency aid could exacerbate localised conflicts and instigate wars (Dippold, E. C., 2016).  To support this claim, an analysis of the kernel density plot reveals insights into the complex connection between emergency food assistance and the dynamics of armed conflict in the SSA region.
+
+
+
+To begin with, the plot unveils a clustering of emergency food aid in specific areas of SSA. These regions demonstrate a heightened distribution of aid, indicating their vulnerability to food insecurity and the associated socio-economic challenges. This concentration underscores the imperative nature of targeted humanitarian interventions in these susceptible regions. Moreover, it becomes evident that once emergency food aid surpasses a certain threshold, the likelihood of conflict escalation increases. This observation implies that, in some areas, while emergency food aid may alleviate immediate food shortages, it fails to address the underlying causes of conflict. Conflict continues to persist, and in some instances, intensifies despite the relief efforts.
+
+A third noteworthy observation arises from the overlap in the density curves for the “Yes” and “No” categories of overall conflict within the mid-range of emergency food aid values. This overlap signifies intricate conflict dynamics. In practical terms, this may suggest that neighbouring regions experiencing similar levels of aid may exhibit varying degrees of conflict. Some areas might witness sporadic or localised conflicts, while others maintain relative stability.
+Additionally, the plot highlights the uneven allocation of emergency food aid. Certain regions receive more substantial aid resources, while neighbouring areas with limited aid resources face heightened risks of conflict. This inequality underscores the imperative need for a thorough review of aid allocation strategies to ensure a fairer distribution and, consequently, the mitigation of conflicts.
+
+The correlation between increased levels of emergency food aid and an elevated risk of conflict underscores the complex relationship between resource scarcity and conflict in SSA. It implies that addressing food insecurity alone might not suffice in mitigating conflicts in regions grappling with deeply entrenched socio-political issues.
