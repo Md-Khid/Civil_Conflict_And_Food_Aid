@@ -122,7 +122,7 @@ str(df)
 
 ### c.  Data Transformation
 
-To facilitate the creation of visualisation charts for the assignment, the following data processes will be performed:
+To facilitate the creation of visualisation charts for the study, the following data processes will be performed:
 
 i.  The conversion of numeric variables, namely 'overall_conflict,' 'minor_conflict,' 'major_conflict,' 'onsetwar,' 'offsetwar,' and 'polity2,' into categorical factors.
 
