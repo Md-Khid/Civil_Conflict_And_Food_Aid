@@ -52,4 +52,8 @@ root.dir = ""<your_directory_here>""
 library(readxl)
 df  <-  read_excel("FoodAid.xlsx")
 ```
+### Install Packages
+```
+install.packages(c("stringr","dplyr", "tidyr", "ggplot2", "patchwork","tidyverse", "WDI","ggmap","leaflet", "ggrepel","scales"))
+```
 
