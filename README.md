@@ -44,6 +44,7 @@ The data quality check, cleaning process and visualisation creation and analysis
 ## Setting Up the Working Directory and Loading Data
 
 ### Set Directory
-```{r}
-root.dir = "C:/Users/RR/Desktop/GitHub Projects/ANL501-Data Visualisation & Story Telling/Assignments & Quizzes/Assignments/ECA/Data"
+```
+{r}
+root.dir = ""<your_directory_here>""
 ```
