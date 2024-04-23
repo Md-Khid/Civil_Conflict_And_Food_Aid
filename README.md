@@ -45,6 +45,11 @@ The data quality check, cleaning process and visualisation creation and analysis
 
 ### Set Directory
 ```
-{r}
 root.dir = ""<your_directory_here>""
 ```
+### Load Data
+```
+library(readxl)
+df  <-  read_excel("FoodAid.xlsx")
+```
+
