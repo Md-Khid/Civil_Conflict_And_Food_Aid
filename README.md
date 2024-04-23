@@ -556,3 +556,35 @@ map
 
 In order to contextualise these resource-related conflicts, it is noteworthy to observe that a considerable proportion of casualties arising from armed confrontations take place in nations characterised by authoritarian governance. Among the 11 nations with the highest documented battle fatalities resulting from internal strife, a noteworthy eight belong to the category of authoritarian regimes. These nations encompass Liberia, Côte d’Ivoire, Chad, Sudan, Uganda, Somalia, Rwanda and Angola. In these particular countries, populations have frequently endured protracted periods of political oppression and violence. Consequently, autocratic leaders within these states may resort to coercive measures to sustain their control over the populace, thereby precipitating conflicts and resistance movements. Moreover, these nations are renowned for their abundant natural resources, which serve as potential sources of competition and conflict. In regions abundant in valuable resources, the control of aid access can translate into both economic and political influence for the warring factions. Therefore, highly armed nation groups may manipulate the allocation of humanitarian assistance to garner support or legitimation, thereby instigating disputes regarding aid allocation and distribution methods, ultimately leading to their own internal conflicts.
 
+## Conclusion
+
+The analysis of Sub-Saharan African countries from 2002 to 2020 uncovers how food aid, though well-intentioned, can unintentionally exacerbate conflicts. Key findings shed light on these complex dynamics:
+
+Firstly, many Sub-Saharan African nations, such as Eswatini, Eritrea, Gambia, Mauritania, Togo, Chad, Uganda, Ethiopia, Sudan, Angola, Zimbabwe, and Rwanda, are governed by autocratic regimes. These regimes limit political freedoms, potentially discouraging emigration.
+
+Secondly, countries with lower Polity2 scores (indicating limited political freedom) experience slower GDP growth. This discourages emigration and deters investors. In contrast, democratically governed nations enjoy stability, attracting investment and fostering economic growth.
+
+Thirdly, nations with lower Polity2 scores often become trapped in cycles of conflict, exacerbated by minimal GDP income levels. Their economies are further strained as they allocate a significant portion of their budgets to military expenditure.
+
+Moreover, emergency food aid allocation reveals disparities, with certain regions receiving more assistance than others. Surprisingly, higher food aid levels can exacerbate conflicts, especially where leaders manipulate distribution to maintain control. The kernel density plot underscores the intricate relationship between emergency food aid and conflict dynamics, highlighting clusters of aid in vulnerable regions.
+
+Additionally, when food aid surpasses a certain threshold, conflict escalation likelihood increases, suggesting that addressing food insecurity alone may not suffice. Uneven aid allocation heightens conflict risks in resource-limited regions, necessitating fairer distribution strategies. In essence, autocratic governance in resource-rich regions creates an environment where aid access equates to economic and political power. Armed groups exploit humanitarian assistance, sparking disputes and internal conflicts.
+
+To address food insecurity in conflict-prone regions, a comprehensive approach is imperative. Initiatives should prioritise good governance, political freedom, and economic stability to break the cycle of conflict and ensure equitable resource distribution. As such, comprehensive strategies addressing root causes are crucial to minimising conflicts in the Sub-Saharan Africa region.
+
+
+## References
+Dippold, E. C. (2016). Evaluating the effects of food aid on conflict in Sub-Saharan Africa: A disaggregate approach (Master’s thesis, Iowa State University).
+
+Goshu, D., & Yimer, M. (2017). The Dynamics of Food Security in Sub-Saharan Africa. International Journal of Scientific & Technology Research, 6(9), 239-246.
+
+Mary, S., & Mishra, A. K. (2019). US Humanitarian Food Aid and Civil Conflict in Africa: Evidence from Nonlinear Panel Data Models. AgEcon Search, Research in Agricultural & Applied Economics.
+
+Nazirou, S. C. M., Mousa, D. S. M., & Afolabi, T. A. (2022, March 25). The impact of Economic Freedom and Democracy on Income Inequality: Empirical Evidence from Sub-
+Saharan African Countries. Archives of Business Research, 10(03), 217-234. https://doi.org/10.14738/abr.103.11641.
+
+Rice, S. E., Graff, C., & Lewis, J. (2006). Poverty and Civil War: What Policymakers Need to Know. Brookings Global Economy and Development. The Brookings Institution.
+
+
+
+
