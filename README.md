@@ -2,9 +2,9 @@
 
 ## Introduction
 
-The intricate relationship between civil conflicts in Sub-Saharan Africa (SSA) and the distribution of emergency food aid is a multifaceted and interconnected matter. This assignment seeks to delve into this complex interplay. SSA, characterised by its diverse geography and intricate socio-political dynamics, consistently witnesses a recurring cycle of civil conflicts, each with its distinct triggers and consequences. Frequently, these conflicts are underpinned by common factors such as grievances, wealth and resource disparities and food insecurity (Rice S.E et al., 2006). Notably, food scarcity emerges as a prominent contributing factor, exacerbating conditions conducive to conflict and posing significant challenges for conflict resolution and post-conflict recovery.
+The intricate relationship between civil conflicts in Sub-Saharan Africa (SSA) and the distribution of emergency food aid is a multifaceted and interconnected matter. This study seeks to delve into this complex interplay. SSA, characterised by its diverse geography and intricate socio-political dynamics, consistently witnesses a recurring cycle of civil conflicts, each with its distinct triggers and consequences. Frequently, these conflicts are underpinned by common factors such as grievances, wealth and resource disparities and food insecurity (Rice S.E et al., 2006). Notably, food scarcity emerges as a prominent contributing factor, exacerbating conditions conducive to conflict and posing significant challenges for conflict resolution and post-conflict recovery.
 
-Within this multifaceted context, emergency food aid serves a multifunctional role and is utilised by various stakeholders, including governments, rebel groups and international organisations. It functions as a tool for conflict prevention, management, or even exploitation (Mary S et al., 2019). This assignment aims to elucidate the nuanced and occasionally intricate interactions between emergency food aid and civil conflict in SSA. Utilising data spanning an 18-year period from 2002 to 2020, this assignment will employ various visualisation techniques to generate meaningful insights, fostering a comprehensive understanding of the relationship between conflict and food aid in the SSA region.
+Within this multifaceted context, emergency food aid serves a multifunctional role and is utilised by various stakeholders, including governments, rebel groups and international organisations. It functions as a tool for conflict prevention, management, or even exploitation (Mary S et al., 2019). This study aims to elucidate the nuanced and occasionally intricate interactions between emergency food aid and civil conflict in SSA. Utilising data spanning an 18-year period from 2002 to 2020, this study will employ various visualisation techniques to generate meaningful insights, fostering a comprehensive understanding of the relationship between conflict and food aid in the SSA region.
 
 ## Data Dictionary
 The dataset analysed in this study covers countries located in the SSA region over an 18-year period from 2002 to 2020. It includes data from a total of 54 countries within the SSA region encompassing a wide range of variables related to civil conflicts, natural disasters, economic indicators and political circumstances. The table below outlines the variables of dataset followed by a brief description of the data.
@@ -65,16 +65,12 @@ df <- read_excel("FoodAid.xlsx")
 # Install necessary R packages for data manipulation, visualisation and mapping
 install.packages(c("stringr",     # For string manipulation functions
                    "dplyr",       # For data manipulation functions
-                   "tidyr",       # For data tidying functions
                    "ggplot2",     # For creating visualisations using grammar of graphics
-                   "patchwork",   # For arranging multiple ggplots into single figure
-                   "tidyverse",   # Meta-package that loads several packages for data science tasks
+                   "patchwork",   # For arranging multiple ggplots into a single figure
                    "WDI",         # For accessing World Bank data
-                   "ggmap",       # For creating maps using Google Maps
                    "leaflet",     # For creating interactive maps
                    "ggrepel",     # For adding non-overlapping text labels to ggplot2 plots
                    "scales"))     # For modifying axis scales and breaks in ggplot2
-
 ```
 
 ### Install Libraries
@@ -82,12 +78,9 @@ install.packages(c("stringr",     # For string manipulation functions
 # Load necessary libraries for data manipulation and visualisation
 library(stringr)      # For string manipulation functions
 library(dplyr)        # For data manipulation functions
-library(tidyr)        # For data tidying functions
 library(ggplot2)      # For creating visualisations
 library(patchwork)    # For combining multiple ggplot2 plots
-library(tidyverse)    # For data manipulation and visualisation functions
 library(WDI)          # For accessing World Bank data
-library(ggmap)        # For creating maps with ggplot2
 library(leaflet)      # For creating interactive maps
 library(ggrepel)      # For adding text labels to ggplot2 plots
 library(scales)       # For scaling functions for ggplot2
@@ -353,7 +346,7 @@ print(scatterplot_2020)
 
 <img width="525" alt="10" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/231f2f84-c073-4adc-873d-94d9ab4a035b">
 
-The scatter plot presents data on the Polity2 scores of countries in Sub-Saharan Africa. Notably, countries including Eswatini, Eritrea, Gambia, Mauritania, Togo, Chad, Uganda, Ethiopia, Sudan, Angola, Zimbabwe, and Rwanda have maintained autocratic forms of government from 2002 to 2020. These nations appear to have continued to embrace autocratic leadership, which heavily influences the lives of their citizens. It is plausible that these countries are governed by one-party systems or military juntas, allowing their leaders to steadily consolidate power. As a result, adjustments in their legal frameworks have been made to restrict political freedoms and human rights, creating a false appearance of legitimacy for autocratic rule. This type of autocratic governance may have imposed hardships on the citizens and limited opportunities for emigration from these nations (Nazirou et al., 2022). Various factors, such as economic constraints, fear of potential repercussions, strong social and familial ties, limited access to unbiased information, strict immigration policies, and aversion to risk, could contribute to discouraging migration.
+The scatter plot presents data on the Polity2 scores of countries in Sub-Saharan Africa. Notably, countries including Eswatini, Eritrea, Gambia, Mauritania, Togo, Chad, Uganda, Ethiopia, Sudan, Angola, Zimbabwe and Rwanda have maintained autocratic forms of government from 2002 to 2020. These nations appear to have continued to embrace autocratic leadership, which heavily influences the lives of their citizens. It is plausible that these countries are governed by one-party systems or military juntas, allowing their leaders to steadily consolidate power. As a result, adjustments in their legal frameworks have been made to restrict political freedoms and human rights, creating a false appearance of legitimacy for autocratic rule. This type of autocratic governance may have imposed hardships on the citizens and limited opportunities for emigration from these nations (Nazirou et al., 2022). Various factors, such as economic constraints, fear of potential repercussions, strong social and familial ties, limited access to unbiased information, strict immigration policies and aversion to risk, could contribute to discouraging migration.
 
 ### Polity2 vs Total GDP
 ```
@@ -400,7 +393,7 @@ print(box_plot)
 ```
 <img width="720" alt="1" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/61d2c03c-774c-48ab-9f7c-5345abd8185b">
 
-More often than not, nations marked by lower Polity2 scores, indicative of autocratic governance, become entangled in the cycle of conflict. This predicament is aggravated by their minimal GDP income levels, which frequently coincide with a surge in civil unrest. These conflicts are further exacerbated by the diversion of public resources (Rice S.E et al., 2006). The correlation between diminished income per capita and an elevated susceptibility to conflict risk is evident, rendering such nations particularly susceptible to the emergence of insurgent groups. As a consequence, a significant portion of their budget must be allocated to military expenditure to suppress these uprisings. Contradictorily, heightened levels of military spending contribute to a further deterioration in the overall well-being of the nation. This assertion finds validation in the research conducted by Goshu and Yimer (2017), which emphasises that nations characterised by severely limited food supplies also exhibit reduced levels of agricultural production, a diminished industrial GDP, and elevated military outlays. Furthermore, military expenditure and annual inflation rates, serving as proxies for economic access to food, have been posited to depress the national per capita food supply. This phenomenon can be attributed, in part, to the prevalence of war and civil strife, which have depleted resources that could otherwise be utilised for food production.
+More often than not, nations marked by lower Polity2 scores, indicative of autocratic governance, become entangled in the cycle of conflict. This predicament is aggravated by their minimal GDP income levels, which frequently coincide with a surge in civil unrest. These conflicts are further exacerbated by the diversion of public resources (Rice S.E et al., 2006). The correlation between diminished income per capita and an elevated susceptibility to conflict risk is evident, rendering such nations particularly susceptible to the emergence of insurgent groups. As a consequence, a significant portion of their budget must be allocated to military expenditure to suppress these uprisings. Contradictorily, heightened levels of military spending contribute to a further deterioration in the overall well-being of the nation. This assertion finds validation in the research conducted by Goshu and Yimer (2017), which emphasises that nations characterised by severely limited food supplies also exhibit reduced levels of agricultural production, a diminished industrial GDP and elevated military outlays. Furthermore, military expenditure and annual inflation rates, serving as proxies for economic access to food, have been posited to depress the national per capita food supply. This phenomenon can be attributed, in part, to the prevalence of war and civil strife, which have depleted resources that could otherwise be utilised for food production.
 
 ### Emergency Food Aid by Onset of War
 
