@@ -171,7 +171,7 @@ df <- df %>%
 
 Additional data will be retrieved from the World Development Indicators (WDI) databank and incorporated into the existing dataset. This task involves the extraction of data series specific to the SSA region, including ‘MS.MIL.XPND.CD’ (Military Expenses) and ‘SN.ITK.DEFC.ZS’ (Prevalence of Undernourishment). The examination of military expenses can offer valuable insights into regional security and expenditures related to conflicts, while the assessment of undernourishment prevalence is a crucial indicator of food insecurity, with the potential to contribute to civil unrest.
 
-#### Abstract Additional Data from the WDI API
+#### Abstract Additional Data from WDI API
 ```
 # Define the list of Sub-Saharan African countries
 sub_saharan_africa_countries <- c(
