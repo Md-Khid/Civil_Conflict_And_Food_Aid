@@ -170,7 +170,7 @@ df <- df %>%
 df <- df %>%
   mutate(year = substr(year, 1, 4))
 ```
-<img width="666" alt="4" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/2651bfed-0751-474d-88b4-291dd8239eef">
+<img width="668" alt="4" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/23ccd993-039c-4d5c-b35c-e09a96b78103">
 
 ### d. Additional Data Abstraction
 
