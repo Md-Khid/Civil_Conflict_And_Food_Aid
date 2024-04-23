@@ -38,6 +38,12 @@ The dataset analysed in this study covers countries located in the SSA region ov
 | polity2<sup>5</sup>                         | Polity2 score (-10 to 10), where -10 for most autocratic regime and 10 for most democratic regime | [Polity IV study database](https://www.systemicpeace.org/politystudy.html)<sup>5</sup>                              |
 
 
-
 ## Software Platform
 The data quality check, cleaning process and visualisation creation and analysis for this study will be conducted using the RStudio platform version 2023.06.1, Build 524.
+
+## Setting Up the Working Directory and Loading Data
+
+### Set Directory
+```{r}
+root.dir = "C:/Users/RR/Desktop/GitHub Projects/ANL501-Data Visualisation & Story Telling/Assignments & Quizzes/Assignments/ECA/Data"
+```
