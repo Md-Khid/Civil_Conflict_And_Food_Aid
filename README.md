@@ -57,6 +57,9 @@ library(readxl)
 df <- read_excel("FoodAid.xlsx")
 
 ```
+<img width="681" alt="1" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/617f321a-327a-46e3-a469-11fb6de24f2c">
+
+
 ### Install Packages
 ```
 # Install necessary R packages for data manipulation, visualisation and mapping
