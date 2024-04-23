@@ -108,12 +108,6 @@ Transforming the dataset into an R data frame results in the generation of 798 o
 
 #### Data Types
 ```
-# Retrieve the column names 
-colnames(df)
-
-# Display the first few rows 
-head(df)
-
 # Provide summary of data structure
 str(df)
 ```
