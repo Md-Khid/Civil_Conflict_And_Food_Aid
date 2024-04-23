@@ -41,7 +41,7 @@ The dataset analysed in this study covers countries located in the SSA region ov
 ## Software Platform
 The data quality check, cleaning process and visualisation creation and analysis for this study will be conducted using the RStudio platform version 2023.06.1, Build 524.
 
-## Set Up Working Directory and Loading Data
+## Set Up Working Directory and Load Data
 
 ### Set Directory
 ```
@@ -73,6 +73,7 @@ b.  Data Structure
 
 Transforming the dataset into an R data frame results in the generation of 798 observations encompassing 25 variables. Analysing the data's structure reveals that all the variables are predominantly numeric in nature, except for "country," which is designated as a character variable, and "year," which is formatted as a date and time.
 
+### Data Types
 ```
 colnames(df)
 head(df)
@@ -89,8 +90,8 @@ i.  The conversion of numeric variables, namely 'overall_conflict,' 'minor_confl
 
 ii. The creation of new variables such as "total_food_aid" (emergency_food_aid + non_emergency_food_aid), "percent_total_food_aid_of_total_aid" (total_food_aid / total_aid), and "total_gdp" (gdp_per_capita \* population).
 
+### Convert numeric variables into Categorical factors
 ```
-```{r}
 df <- df %>%
   mutate(
     overall_conflict = factor(overall_conflict, levels = c(0, 1), labels = c("No", "Yes")),
@@ -108,4 +109,14 @@ df <- df %>%
 ```
 <img width="826" alt="2" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/8ffdc281-a75c-4c85-8a45-583273c07eb8">
 
+### Create New Variables
+```
+df <- df %>%
+  mutate(
+    total_food_aid = emergency_food_aid + non_emergency_food_aid,
+    percent_total_food_aid_of_total_aid = total_food_aid / total_aid,
+    total_gdp = gdp_per_capita * population
+  )
+```
+<img width="583" alt="3" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/079d8e15-8254-4e1c-a3bc-c89ce492fb19">
 
