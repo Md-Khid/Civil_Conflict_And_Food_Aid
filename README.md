@@ -73,7 +73,7 @@ install.packages(c("stringr",     # For string manipulation functions
                    "scales"))     # For modifying axis scales and breaks in ggplot2
 
 ```
-```
+
 ### Install Libraries
 ```
 # Load necessary libraries for data manipulation and visualisation
