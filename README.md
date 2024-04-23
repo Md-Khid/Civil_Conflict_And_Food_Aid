@@ -167,3 +167,36 @@ df <- df %>%
 ```
 <img width="665" alt="4" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/5961f291-02fe-4dc5-b14c-c64a4c196012">
 
+### d. Additional Data Abstraction
+
+Additional data will be retrieved from the World Development Indicators (WDI) databank and incorporated into the existing dataset. This task involves the extraction of data series specific to the SSA region, including ‘MS.MIL.XPND.CD’ (Military Expenses) and ‘SN.ITK.DEFC.ZS’ (Prevalence of Undernourishment). The examination of military expenses can offer valuable insights into regional security and expenditures related to conflicts, while the assessment of undernourishment prevalence is a crucial indicator of food insecurity, with the potential to contribute to civil unrest.
+
+#### Abstract Additional Data from the WDI API
+```
+# Define the list of Sub-Saharan African countries
+sub_saharan_africa_countries <- c(
+  "AO", "BJ", "BF", "BI", "CV", "CM", "CF", "TD", "KM", "CG", "CI", "DJ", "ER",
+  "SZ", "ET", "GM", "GH", "GN", "GW", "KE", "LS", "LR", "MG", "MW", "ML", "MR",
+  "MZ", "NA", "NE", "NG", "RW", "SN", "SL", "SO", "ZA", "SD", "TZ", "TG", "UG",
+  "ZM", "ZW", "CD"
+)
+
+# Define the list of indicators
+indicators <- c(
+  "MS.MIL.XPND.CD",     # Military Expenses
+  "SN.ITK.DEFC.ZS"      # Prevalence of Undernourishment
+)
+
+# Fetch WDI data for the selected indicators and countries
+wdi_data <- WDI(
+  country = sub_saharan_africa_countries,
+  indicator = indicators,
+  start = 2002,
+  end = 2020
+)
+
+# View the retrieved data
+View(wdi_data)
+```
+<img width="724" alt="5" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/c3d49050-fefd-45e6-8b28-ec1db56c6737">
+
