@@ -101,7 +101,7 @@ It should be noted that these sets of variables may not be compatible for simult
 
 ### b.  Data Structure
 
-Transforming the dataset into an R data frame results in the generation of 798 observations encompassing 25 variables. Analysing the data's structure reveals that all the variables are predominantly numeric in nature, except for "country," which is designated as a character variableand "year," which is formatted as a date and time.
+Transforming the dataset into an R data frame results in the generation of 798 observations encompassing 25 variables. Analysing the data's structure reveals that all the variables are predominantly numeric in nature, except for "country," which is designated as a character variable  and "year," which is formatted as a date and time.
 
 #### Data Types
 ```
