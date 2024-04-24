@@ -115,7 +115,7 @@ str(df)
 
 To make visualisation charts for the study, the study will:
 
-i. Convert numeric variables ('overall_conflict' 'minor_conflict', 'major_conflict', 'onsetwar', 'offsetwar' and 'polity2') into categories.
+i. Convert numeric variables ('overall_conflict', 'minor_conflict', 'major_conflict', 'onsetwar', 'offsetwar' and 'polity2') into categories.
 
 #### Convert numeric variables into Categorical factors
 ```
