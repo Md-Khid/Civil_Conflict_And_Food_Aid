@@ -101,7 +101,7 @@ As using these variable sets simultaneously in data exploration may hinder accur
 
 ### b.  Data Structure
 
-Converting the dataset to an R data frame yields 798 observations with 25 variables. Analysis shows most variables are numeric, except "country" noted as a character variable, and "year" formatted as date and time.
+Converting the dataset to an R data frame yields 798 observations with 25 variables. Analysis shows most variables are numeric, except "country" noted as a character variable and "year" formatted as date and time.
 
 #### Data Types
 ```
