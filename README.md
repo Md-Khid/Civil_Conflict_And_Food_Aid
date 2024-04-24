@@ -543,7 +543,7 @@ map
 ```
 ![12](https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/48306fba-bf4d-42b3-833b-b34175dc3671)
 
-To understand the resource-related conflicts, it is noteworthy to observe that a considerable proportion of casualties arising from armed confrontations take place in nations characterised by authoritarian governance. Among the 11 nations with the highest documented battle fatalities, a noteworthy eight belong to the category of authoritarian regimes. These nations encompass Liberia, Côte d’Ivoire, Chad, Sudan, Uganda, Somalia, Rwanda and Angola. In these particular countries, populations have frequently endured protracted periods of political oppression and violence as autocratic leaders within these states may resort to coercive measures to sustain their control over the populace.
+To understand the resource-related conflicts, it is noteworthy to observe that a considerable proportion of casualties arising from armed confrontations take place in nations characterised by authoritarian governance. Among the 11 nations with the highest documented battle fatalities, a noteworthy eight belong to the category of authoritarian regimes. These nations encompass Liberia, Côte d’Ivoire, Chad, Sudan, Uganda, Somalia, Rwanda and Angola. In these particular countries, populations have frequently endured protracted periods of political oppression and violence as autocratic leaders within these nations may resort to coercive measures to sustain their control over the populace.
 
 ## Conclusion
 
