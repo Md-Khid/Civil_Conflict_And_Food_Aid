@@ -2,12 +2,11 @@
 
 ## Introduction
 
-The intricate relationship between civil conflicts in Sub-Saharan Africa (SSA) and the distribution of emergency food aid is a multifaceted and interconnected matter. This study seeks to delve into this complex interplay. SSA, characterised by its diverse geography and intricate socio-political dynamics, consistently witnesses a recurring cycle of civil conflicts, each with its distinct triggers and consequences. Frequently, these conflicts are underpinned by common factors such as grievances, wealth and resource disparities and food insecurity (Rice S.E et al., 2006). Notably, food scarcity emerges as a prominent contributing factor, exacerbating conditions conducive to conflict and posing significant challenges for conflict resolution and post-conflict recovery.
-
-Within this multifaceted context, emergency food aid serves a multifunctional role and is utilised by various stakeholders, including governments, rebel groups and international organisations. It functions as a tool for conflict prevention, management, or even exploitation (Mary S et al., 2019). This study aims to elucidate the nuanced and occasionally intricate interactions between emergency food aid and civil conflict in SSA. Utilising data spanning an 18-year period from 2002 to 2020, this study will employ various visualisation techniques to generate meaningful insights, fostering a comprehensive understanding of the relationship between conflict and food aid in the SSA region.
+This study explores the complex link between civil conflicts in Sub-Saharan Africa (SSA) and emergency food aid distribution. SSA with its diverse geography and socio-political dynamics, experiences recurrent conflicts driven by factors like grievances, wealth disparities and food insecurity. Food scarcity worsens conditions for conflict and hampers conflict resolution and recovery. This study aims to uncover the intricate interactions between emergency food aid and civil conflict in SSA using data from 2002 to 2020. Visualisation techniques will be used to gain insights into this relationship.
 
 ## Data Dictionary
-The dataset analysed in this study covers countries located in the SSA region over an 18-year period from 2002 to 2020. It includes data from a total of 54 countries within the SSA region encompassing a wide range of variables related to civil conflicts, natural disasters, economic indicators and political circumstances. The table below outlines the variables of dataset followed by a brief description of the data.
+
+The dataset studied covers SSA countries from 2002 to 2020, comprising 54 countries with various variables on conflicts, disasters, economy and politics. Below table lists the dataset variables with brief descriptions.
 
 | Variable Name       | Variable Labels                                                                 | Source                                                                                                      |
 |---------------------|--------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
@@ -91,17 +90,18 @@ library(scales)       # For scaling functions for ggplot2
 
 Based on the data [dictionary](#data-dictionary), certain variables represent the cumulative totals of various distinct variables. For this reason, it is important to consider the following aspects:
 
-i.  The "overall_conflict" variable denotes the aggregate of both the "minor_conflict" and "major_conflict" variables.
+As per the data [dictionary](#data-dictionary), some variables represent combined totals of distinct variables. Hence, it's crucial to consider:
 
-ii. "Total_affected_disasters" corresponds to the summation of "affected_disasters" and "homeless_disasters" variables.
+i. "overall_conflict" equals "minor_conflict" and "major_conflict."
+ii. "Total_affected_disasters" equals "affected_disasters" and "homeless_disasters."
+iii. "Total_affected_othercountries" equals "total_affected_neighbours," "total_affected_non_neighbours," and "nda_other_region."
 
-iii. "Total_affected_othercountries" is derived from the summation of "total_affected_neighbours," "total_affected_non_neighbours," and "nda_other_region" variables.
+As using these variable sets simultaneously in data exploration may hinder accurate visualisation.
 
-It should be noted that these sets of variables may not be compatible for simultaneous utilisation during the data exploration phase, as doing so may impede the attainment of accurate visualisation representation.
 
 ### b.  Data Structure
 
-Transforming the dataset into an R data frame results in the generation of 798 observations encompassing 25 variables. Analysing the data's structure reveals that all the variables are predominantly numeric in nature, except for "country," which is designated as a character variable  and "year," which is formatted as a date and time.
+Converting the dataset to an R data frame yields 798 observations with 25 variables. Analysis shows most variables are numeric, except "country" noted as a character variable, and "year" formatted as date and time.
 
 #### Data Types
 ```
@@ -113,9 +113,9 @@ str(df)
 
 ### c.  Data Transformation
 
-To facilitate the creation of visualisation charts for the study, the following data processes will be performed:
+To make visualisation charts for the study, the study will:
 
-i.  The conversion of numeric variables, namely 'overall_conflict,' 'minor_conflict,' 'major_conflict,' 'onsetwar,' 'offsetwar,' and 'polity2,' into categorical factors.
+i. Convert numeric variables ('overall_conflict' 'minor_conflict', 'major_conflict', 'onsetwar', 'offsetwar' and 'polity2') into categories.
 
 #### Convert numeric variables into Categorical factors
 ```
@@ -138,7 +138,7 @@ df <- df %>%
 ```
 <img width="824" alt="2" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/5e93efdd-de35-457f-a7bb-45b3a457c34a">
 
-ii. The creation of new variables such as "total_food_aid" (emergency_food_aid + non_emergency_food_aid), "percent_total_food_aid_of_total_aid" (total_food_aid / total_aid)and "total_gdp" (gdp_per_capita \* population).
+ii. Create new variables: "total_food_aid" (sum of emergency_food_aid and non_emergency_food_aid), "percent_total_food_aid_of_total_aid" (total_food_aid divided by total_aid) and "total_gdp" (gdp_per_capita multiplied by population).
 
 #### Create New Variables
 ```
@@ -167,7 +167,7 @@ df <- df %>%
 
 ### d. Additional Data Abstraction
 
-Additional data will be retrieved from the World Development Indicators (WDI) databank and incorporated into the existing dataset. This task involves the extraction of data series specific to the SSA region, including ‘MS.MIL.XPND.CD’ (Military Expenses) and ‘SN.ITK.DEFC.ZS’ (Prevalence of Undernourishment). The examination of military expenses can offer valuable insights into regional security and expenditures related to conflicts while the assessment of undernourishment prevalence is a crucial indicator of food insecurity with the potential to contribute to civil unrest.
+More data from the World Development Indicators (WDI) will be added to the current dataset focusing on SSA region stats like ‘MS.MIL.XPND.CD’ (Military Expenses) and ‘SN.ITK.DEFC.ZS’ (Prevalence of Undernourishment). Looking at military spending gives insights on security and checking undernourishment levels is crucial for food security which affects civil unrest potential.
 
 #### Abstract Additional Data from WDI API
 ```
@@ -199,7 +199,8 @@ View(wdi_data)
 <img width="664" alt="5" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/07091986-c867-4cbf-bfc7-3e16a0300859">
 
 ### e.	Merging Data
-The country names in the World Development Indicators (WDI) dataset will be renamed to match the names in the existing dataset to ensure accurate country identification. Numerical values such as ‘2002’ will be extracted from the ‘year’ column in the existing dataset and converted into integers for standardisation. Both datasets will be merged using the ‘country’ and ‘year’ columns as the basis for identification.
+
+The World Development Indicators (WDI) dataset will have country names aligned with the existing dataset for accurate identification. Years from the 'year' column in the existing dataset will be converted to integers for standardisation. Both datasets will be merged based on 'country' and 'year' columns.
 
 #### Data Transformation for Merging WDI Data
 ```
@@ -243,14 +244,14 @@ df2 <- df2 %>%
 <img width="684" alt="6" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/eceb2413-1e28-4ded-a116-b3b01d81667b">
 
 ### f.	Missing Values
-To ensure a consistent data flow and prevent the generation of visualisation chart errors, missing values will be replaced with ‘NA’ to maintain the integrity of the merged dataset, making it more suitable for analysis and interpretation. Therefore, it is important to consider the following variables, each of which has more than 100 missing rows during the exploratory data analysis phase:
+
+To maintain data integrity and avoid visualisation errors, missing values will be replaced with 'NA' in the merged dataset. This ensures consistency for analysis. Key variables with over 100 missing rows include: 
 
 •	onsetwar (126 missing)
 •	offsetwar (126 missing)
 •	battle_deaths (126 missing)
-•	civilian_deaths (126 missing)
+•	civilian_deaths (126 missing) 
 •	Military Expenditure (128 missing)
-
 
 #### Check for Missing Values
 ```
@@ -346,7 +347,7 @@ print(scatterplot_2020)
 
 <img width="525" alt="10" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/231f2f84-c073-4adc-873d-94d9ab4a035b">
 
-The scatter plot presents data on the Polity2 scores of countries in Sub-Saharan Africa. Notably, countries including Eswatini, Eritrea, Gambia, Mauritania, Togo, Chad, Uganda, Ethiopia, Sudan, Angola, Zimbabwe and Rwanda have maintained autocratic forms of government from 2002 to 2020. These nations appear to have continued to embrace autocratic leadership, which heavily influences the lives of their citizens. It is plausible that these countries are governed by one-party systems or military juntas, allowing their leaders to steadily consolidate power. As a result, adjustments in their legal frameworks have been made to restrict political freedoms and human rights, creating a false appearance of legitimacy for autocratic rule. This type of autocratic governance may have imposed hardships on the citizens and limited opportunities for emigration from these nations (Nazirou et al., 2022). Various factors, such as economic constraints, fear of potential repercussions, strong social and familial ties, limited access to unbiased information, strict immigration policies and aversion to risk could contribute to discouraging migration.
+The scatter plot depicts SSA countries' Polity2 scores. It can be observed that Eswatini, Eritrea, Gambia, Mauritania, Togo, Chad, Uganda, Ethiopia, Sudan, Angola, Zimbabwe and Rwanda have maintained autocratic governments from 2002 to 2020. These nations might be governed by one-party systems or military rule possibly restricting political freedoms and human rights. The limited emigration from these nations could also be due to hardships, economic constraints, fear, strict immigration policies and risk aversion.
 
 ### Polity2 vs Total GDP
 ```
@@ -364,7 +365,7 @@ print(scatter_plotGDP)
 ```
 <img width="524" alt="11" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/09536caf-82ba-42f7-b92d-b79192860511">
 
-Over the years, countries with lower Polity2 scores (ranging from -10 to 0) have consistently experienced slower GDP growth between 2002 and 2020. On the other hand, nations with higher Polity2 scores (ranging from 0 to 10) have seen stronger GDP growth. This difference in economic performance may be because countries with lower scores have limited political freedom and transparency (Nazirou et al., 2022). This can discourage people from leaving these countries and make it less attractive for investors to do business there due to the unfavourable political climate. In contrast, countries with democratic governments tend to have more stable political systems and a better environment for business. This attracts more business owners and investors, ultimately boosting the economy and leading to stronger GDP growth. Another potential explanation for the variations in GDP growth among countries with lower Polity2 scores may be linked to increased income inequality possibly stemming from progressive tax policies. Notably, increased economic freedom tends to result in reduced taxation and relaxation of regulations (Nazirou et al., 2022).
+Countries with lower Polity2 scores (-10 to 0) experienced slower GDP growth from 2002 to 2020, while nations with higher scores (0 to 10) saw stronger growth. This difference may stem from limited political freedom and transparency in lower-scoring countries, discouraging people and investors. Democratic nations tend to offer more stable political climates, attracting investment and boosting GDP.
 
 ### Military Expenditure by Country
 ```
@@ -393,7 +394,7 @@ print(box_plot)
 ```
 <img width="720" alt="1" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/61d2c03c-774c-48ab-9f7c-5345abd8185b">
 
-More often than not, nations marked by lower Polity2 scores, indicative of autocratic governance, become entangled in the cycle of conflict. This predicament is aggravated by their minimal GDP income levels which frequently coincide with a surge in civil unrest. These conflicts are further exacerbated by the diversion of public resources (Rice S.E et al., 2006). The correlation between diminished income per capita and an elevated susceptibility to conflict risk is evident, rendering such nations particularly susceptible to the emergence of insurgent groups. As a consequence, a significant portion of their budget must be allocated to military expenditure to suppress these uprisings. Contradictorily, heightened levels of military spending contribute to a further deterioration in the overall well-being of the nation. This assertion finds validation in the research conducted by Goshu and Yimer (2017), which emphasises that nations characterised by severely limited food supplies also exhibit reduced levels of agricultural production, a diminished industrial GDP and elevated military outlays. Furthermore, military expenditure and annual inflation rates, serving as proxies for economic access to food have been posited to depress the national per capita food supply. This phenomenon can be attributed, in part, to the prevalence of war and civil strife which have depleted resources that could otherwise be utilised for food production.
+Countries with low Polity2 scores, indicating autocratic governance often face recurring conflicts due to their low GDP income levels leading to heightened civil unrest. The diversion of public resources exacerbates these conflicts making these nations vulnerable to insurgent groups. This necessitates substantial military spending to suppress the uprisings resulting in a decline in national well-being. Additionally, it can be observed that countries with limited food supplies also tend to allocate more funds to their military.
 
 ### Emergency Food Aid by Onset of War
 
@@ -437,17 +438,7 @@ print(kernel_density_plot)
 ```
 <img width="720" alt="2" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/724bd415-7694-4245-b07b-197834c838b0">
 
-
-Considering the strong military forces of these autocratic nations, they are also likely to employ their authority in sustaining their political influence and dominance. Such endeavours to secure control over food aid are liable to provoke tensions within these nations. Consequently, the provision of emergency aid could exacerbate localised conflicts and instigate wars (Dippold, E. C., 2016).  To support this claim, an analysis of the kernel density plot reveals insights into the complex connection between emergency food assistance and the dynamics of armed conflict in the SSA region.
-
-To begin with, the plot unveils a clustering of emergency food aid in specific areas of SSA. These regions demonstrate a heightened distribution of aid, indicating their vulnerability to food insecurity and the associated socio-economic challenges. This concentration underscores the imperative nature of targeted humanitarian interventions in these susceptible regions. Secondly, it becomes evident that once emergency food aid surpasses a certain threshold, the likelihood of conflict escalation increases. This observation implies that, in some areas, while emergency food aid may alleviate immediate food shortages, it fails to address the underlying causes of conflict. Conflict continues to persistand in some instances, intensifies despite the relief efforts.
-
-A third noteworthy observation arises from the overlap in the density curves for the “Yes” and “No” categories of overall conflict within the mid-range of emergency food aid values. This overlap signifies intricate conflict dynamics. In practical terms, this may suggest that neighbouring regions experiencing similar levels of aid may exhibit varying degrees of conflict. Some areas might witness sporadic or localised conflicts, while others maintain relative stability.
-
-Additionally, the plot highlights the uneven allocation of emergency food aid. Certain regions receive more substantial aid resources, while neighbouring areas with limited aid resources face heightened risks of conflict. This inequality underscores the imperative need for a thorough review of aid allocation strategies to ensure a fairer distribution and consequently, the mitigation of conflicts.
-
-The correlation between increased levels of emergency food aid and an elevated risk of conflict underscores the complex relationship between resource scarcity and conflict in SSA. It implies that addressing food insecurity alone might not suffice in mitigating conflicts in regions grappling with deeply entrenched socio-political issues.
-
+The kernel density plot analysis reveals insights into the connection between emergency food assistance and armed conflict dynamics in SSA. Clustering of aid in specific SSA areas indicates vulnerability to food insecurity and associated socio-economic challenges, emphasising targeted humanitarian interventions. Moreover, as aid surpasses a threshold, the likelihood of conflict escalation increases suggesting a failure to address underlying conflict causes despite receiving food aid relief. Overlapping density curves for "Yes" and "No" conflict and onset of war categories imply complex conflict dynamics, with neighbouring regions experiencing similar aid levels exhibiting varying conflict degrees. Uneven aid allocation with some regions receiving more aid than others may heighten conflict risks, emphasising the need for fairer aid distribution to mitigate conflicts.
 
 ### Battle Death by Emergency Food Aid
 
@@ -475,7 +466,7 @@ print(correlation_plot)
 ```
 <img width="720" alt="4" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/b39453ad-727c-4d93-a944-51fe10c859b7">
 
-Regardless of the quantity of emergency food assistance provided, conflicts and wars remain an inevitability. This perspective finds support in Mary et al.’s 2016 research, which argues that humanitarian aid of this nature tends to perpetuate rather than resolve conflicts in affected regions. Moreover, the severity of casualties resulting from such conflicts worsens when the received food aid is insufficient, prompting nations to engage in warfare to secure limited emergency food supplies. These conflicts often involve high autocratic countries competing with rebel leaders or supporters for control over food distribution, diverting resources toward military preparations. The persistence of war in these autocratic nations can be attributed to their substantial military expenditures aimed at suppressing rebel uprisings. However, as earlier findings indicate, these nations consistently experience recurring cycles of civil conflicts, necessitating a significant portion of their budgets to be allocated to military spending for quelling these uprisings. This vulnerability to insurgent group emergence is particularly acute in autocratic nations, given their diminished industrial GDP.
+Regardless of the quantity of emergency food assistance provided, conflicts and wars remain an inevitability. It can be seen that humanitarian aid tends to perpetuate rather than resolve conflicts in the SSA regions. Moreover, the severity of casualties resulting from such conflicts worsens when the received food aid is insufficient prompting nations to engage in warfare to secure limited emergency food supplies. These conflicts often involve autocratic countries competing with other nations, rebel leaders or supporters for control over food distribution.
 
 ### Number of Battle Deaths by Country
 ```
@@ -548,36 +539,25 @@ map
 ```
 ![12](https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/48306fba-bf4d-42b3-833b-b34175dc3671)
 
-In order to contextualise these resource-related conflicts, it is noteworthy to observe that a considerable proportion of casualties arising from armed confrontations take place in nations characterised by authoritarian governance. Among the 11 nations with the highest documented battle fatalities resulting from internal strife, a noteworthy eight belong to the category of authoritarian regimes. These nations encompass Liberia, Côte d’Ivoire, Chad, Sudan, Uganda, Somalia, Rwanda and Angola. In these particular countries, populations have frequently endured protracted periods of political oppression and violence. Consequently, autocratic leaders within these states may resort to coercive measures to sustain their control over the populace, thereby precipitating conflicts and resistance movements. Moreover, these nations are renowned for their abundant natural resources, which serve as potential sources of competition and conflict. In regions abundant in valuable resources, the control of aid access can translate into both economic and political influence for the warring factions. Therefore, highly armed nation groups may manipulate the allocation of humanitarian assistance to garner support or legitimation, thereby instigating disputes regarding aid allocation and distribution methods, ultimately leading to their own internal conflicts.
+To understand the resource-related conflicts, it is noteworthy to observe that a considerable proportion of casualties arising from armed confrontations take place in nations characterised by authoritarian governance. Among the 11 nations with the highest documented battle fatalities, a noteworthy eight belong to the category of authoritarian regimes. These nations encompass Liberia, Côte d’Ivoire, Chad, Sudan, Uganda, Somalia, Rwanda and Angola. In these particular countries, populations have frequently endured protracted periods of political oppression and violence as autocratic leaders within these states may resort to coercive measures to sustain their control over the populace.
 
 ## Conclusion
 
-The analysis of Sub-Saharan African countries from 2002 to 2020 uncovers how food aid, though well-intentioned, can unintentionally exacerbate conflicts. Key findings shed light on these complex dynamics:
+The analysis SSA countries from 2002 to 2020 uncovers how food aid, though well-intentioned, can unintentionally exacerbate conflicts. Key findings shed light on these complex dynamics:
 
-Firstly, many Sub-Saharan African nations, such as Eswatini, Eritrea, Gambia, Mauritania, Togo, Chad, Uganda, Ethiopia, Sudan, Angola, Zimbabweand Rwanda, are governed by autocratic regimes. These regimes limit political freedoms, potentially discouraging emigration.
+Firstly, many SSA nations such as Eswatini, Eritrea, Gambia, Mauritania, Togo, Chad, Uganda, Ethiopia, Sudan, Angola, Zimbabwe and Rwanda are governed by autocratic regimes. These regimes limit political freedoms, potentially discouraging emigration.
 
-Secondly, countries with lower Polity2 scores (indicating limited political freedom) experience slower GDP growth. This discourages emigration and deters investors. In contrast, democratically governed nations enjoy stability, attracting investment and fostering economic growth.
+Secondly, countries with lower Polity2 scores experience slower GDP growth. This discourages emigration and deters investors. In contrast, democratically governed nations enjoy stability, attracting investment and fostering economic growth.
 
-Thirdly, nations with lower Polity2 scores often become trapped in cycles of conflict, exacerbated by minimal GDP income levels. Their economies are further strained as they allocate a significant portion of their budgets to military expenditure.
+Thirdly, nations with lower Polity2 scores often become trapped in cycles of conflict exacerbated by minimal GDP income levels. Their economies are further strained as they allocate a significant portion of their budgets to military expenditure.
 
-Moreover, emergency food aid allocation reveals disparities, with certain regions receiving more assistance than others. Surprisingly, higher food aid levels can exacerbate conflicts, especially where leaders manipulate distribution to maintain control. The kernel density plot underscores the intricate relationship between emergency food aid and conflict dynamics, highlighting clusters of aid in vulnerable regions.
+Moreover, emergency food aid allocation reveals disparities with certain regions receiving more assistance than others. Surprisingly, higher food aid levels can exacerbate conflicts especially where nation leaders manipulate distribution to maintain control. The kernel density plot underscores the intricate relationship between emergency food aid and conflict dynamics highlighting clusters of aid in vulnerable regions.
 
-Additionally, when food aid surpasses a certain threshold, conflict escalation likelihood increases, suggesting that addressing food insecurity alone may not suffice. Uneven aid allocation heightens conflict risks in resource-limited regions, necessitating fairer distribution strategies. In essence, autocratic governance in resource-rich regions creates an environment where aid access equates to economic and political power. Armed groups exploit humanitarian assistance, sparking disputes and internal conflicts.
+Additionally, when food aid surpasses a certain threshold, conflict escalation likelihood increases suggesting that addressing food insecurity alone may not suffice. Uneven aid allocation heightens conflict risks in resource-limited regions necessitating fairer distribution strategies. In essence, autocratic governance creates an environment where aid access equates to economic and political power to exploit humanitarian assistance. Thereby, sparking disputes and internal conflicts.
 
-To address food insecurity in conflict-prone regions, a comprehensive approach is imperative. Initiatives should prioritise good governance, political freedomand economic stability to break the cycle of conflict and ensure equitable resource distribution. As such, comprehensive strategies addressing root causes are crucial to minimising conflicts in the Sub-Saharan Africa region.
+To address food insecurity, a comprehensive approach is imperative. Initiatives should prioritise good governance, political freedom and economic stability to break the cycle of conflict and ensure equitable resource distribution. As such, comprehensive strategies addressing root causes are crucial to minimising conflicts in the SSA region.
 
 
-## References
-Dippold, E. C. (2016). Evaluating the effects of food aid on conflict in Sub-Saharan Africa: A disaggregate approach (Master’s thesis, Iowa State University).
-
-Goshu, D., & Yimer, M. (2017). The Dynamics of Food Security in Sub-Saharan Africa. International Journal of Scientific & Technology Research, 6(9), 239-246.
-
-Mary, S., & Mishra, A. K. (2019). US Humanitarian Food Aid and Civil Conflict in Africa: Evidence from Nonlinear Panel Data Models. AgEcon Search, Research in Agricultural & Applied Economics.
-
-Nazirou, S. C. M., Mousa, D. S. M., & Afolabi, T. A. (2022, March 25). The impact of Economic Freedom and Democracy on Income Inequality: Empirical Evidence from Sub-
-Saharan African Countries. Archives of Business Research, 10(03), 217-234. https://doi.org/10.14738/abr.103.11641.
-
-Rice, S. E., Graff, C., & Lewis, J. (2006). Poverty and Civil War: What Policymakers Need to Know. Brookings Global Economy and Development. The Brookings Institution.
 
 
 
