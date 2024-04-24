@@ -248,9 +248,13 @@ df2 <- df2 %>%
 To maintain data integrity and avoid visualisation errors, missing values will be replaced with 'NA' in the merged dataset. This ensures consistency for analysis. Key variables with over 100 missing rows include: 
 
 •	onsetwar (126 missing)
+
 •	offsetwar (126 missing)
+
 •	battle_deaths (126 missing)
+
 •	civilian_deaths (126 missing) 
+
 •	Military Expenditure (128 missing)
 
 #### Check for Missing Values
