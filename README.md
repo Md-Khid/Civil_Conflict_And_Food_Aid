@@ -94,7 +94,7 @@ i. "overall_conflict" equals "minor_conflict" and "major_conflict."
 
 ii. "Total_affected_disasters" equals "affected_disasters" and "homeless_disasters."
 
-iii. "Total_affected_othercountries" equals "total_affected_neighbours," "total_affected_non_neighbours," and "nda_other_region."
+iii. "Total_affected_othercountries" equals "total_affected_neighbours", "total_affected_non_neighbours" and "nda_other_region."
 
 As using these variable sets simultaneously in data exploration may hinder accurate visualisation.
 
