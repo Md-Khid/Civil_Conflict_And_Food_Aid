@@ -88,8 +88,6 @@ library(scales)       # For scaling functions for ggplot2
 
 ### a.  Examine the Dataset
 
-Based on the data [dictionary](#data-dictionary), certain variables represent the cumulative totals of various distinct variables. For this reason, it is important to consider the following aspects:
-
 As per the data [dictionary](#data-dictionary), some variables represent combined totals of distinct variables. Hence, it's crucial to consider:
 
 i. "overall_conflict" equals "minor_conflict" and "major_conflict."
