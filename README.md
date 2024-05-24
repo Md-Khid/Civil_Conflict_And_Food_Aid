@@ -95,11 +95,6 @@ More data from the World Development Indicators (WDI) will be added to the curre
 
 The World Development Indicators (WDI) dataset will have country names aligned with the existing dataset for accurate identification. Years from the 'year' column in the existing dataset will be converted to integers for standardisation. Both datasets will be merged based on 'country' and 'year' columns.
 
-#### Data Transformation for Merging WDI Data
-
-#### Convert the 'year' Column in the 'df' DataFrame to Integer and Perform Data Merging
-
-
 <img width="686" alt="5" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/a7e98a28-7bbe-4829-b323-c5cf298cd016">
 
 #### Rename variables
