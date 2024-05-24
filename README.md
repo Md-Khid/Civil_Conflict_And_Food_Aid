@@ -126,48 +126,6 @@ To maintain data integrity and avoid visualisation errors, missing values will b
 ## Data Findings
 
 ### Polity2 vs Population
-```
-# Filter df2 for the year 2002
-df2_2002 <- df2 %>% filter(year == 2002)
-
-# Filter df2 for the year 2020
-df2_2020 <- df2 %>% filter(year == 2020)
-
-# Determine the y-axis limits based on both 2002 and 2020 data
-y_axis_limits <- range(df2_2002$population / 1e6, df2_2020$population / 1e6)
-
-# Create the scatter plot for year 2002 with labels for countries with polity2 values from 0 to -10
-scatterplot_2002 <- ggplot(data = df2_2002, aes(x = polity2, y = population / 1e6, label = country)) +
-  geom_point() +
-  labs(x = "Polity2", y = "Population (in millions)") +
-  ggtitle("Year 2002") +
-  geom_text_repel(
-    aes(x = polity2, y = population / 1e6),
-    data = df2_2002 %>% filter(polity2 >= -10 & polity2 <= 0),
-    size = 2,
-    box.padding = 0.5
-  ) +
-  scale_y_continuous(labels = comma_format(), limits = y_axis_limits)  # Set y-axis limits
-
-# Create the scatter plot for year 2020 with labels for countries with polity2 values from 0 to -10
-scatterplot_2020 <- ggplot(data = df2_2020, aes(x = polity2, y = population / 1e6, label = country)) +
-  geom_point(aes(color = ifelse(polity2 >= -10 & polity2 <= 0, "Highlighted", "Other")),
-             size = 2) +
-  labs(x = "Polity2", y = "Population (in millions)") +
-  ggtitle("Year 2020") +
-  geom_text_repel(
-    aes(x = polity2, y = population / 1e6),
-    data = df2_2020 %>% filter(polity2 >= -10 & polity2 <= 0),
-    size = 2,
-    box.padding = 0.5
-  ) +
-  scale_color_manual(values = c("Highlighted" = "red", "Other" = "black")) +
-  theme(legend.position = "none") 
-
-# Print the scatter plots separately for year 2002 and 2020
-print(scatterplot_2002)
-print(scatterplot_2020)
-```
 
 #### Yr.2002
 <img width="524" alt="9" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/1929b2c4-5475-48f1-b2d2-c05e26535803">
@@ -179,92 +137,24 @@ print(scatterplot_2020)
 The scatter plot depicts SSA countries' Polity2 scores. It can be observed that Eswatini, Eritrea, Gambia, Mauritania, Togo, Chad, Uganda, Ethiopia, Sudan, Angola, Zimbabwe and Rwanda have maintained autocratic governments from 2002 to 2020. These nations might be governed by one-party systems or military rule possibly restricting political freedoms and human rights. The limited emigration from these nations could also be due to hardships, economic constraints, fear, strict immigration policies and risk aversion.
 
 ### Polity2 vs Total GDP
-```
-# Create a scatter plot for polity2 vs. total_gdp in millions of USD
-scatter_plotGDP <- ggplot(data = df2, aes(x = polity2, y = total_gdp / 1e6)) +  # Divide by 1e6 to convert to millions
-  geom_point(aes(color = ifelse(polity2 >= -10 & polity2 <= 0, "Highlighted", "Other")), size = 2) +  # Highlight condition and reduce point size
-  labs(x = "Polity2", y = "Total GDP (Millions USD)") +  
-  ggtitle("") +
-  scale_y_continuous(labels = scales::comma_format(scale = 1e-6)) +  # Format y-axis labels in millions
-  scale_color_manual(values = c("Highlighted" = "red", "Other" = "black"))+
-  theme(legend.position = "none") 
 
-# Print the scatter plot
-print(scatter_plotGDP)
-```
 <img width="524" alt="11" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/09536caf-82ba-42f7-b92d-b79192860511">
 
 Countries with lower Polity2 scores (-10 to 0) experienced slower GDP growth from 2002 to 2020, while nations with higher scores (0 to 10) saw stronger growth. This difference may stem from limited political freedom and transparency in lower-scoring countries, discouraging people and investors. Democratic nations tend to offer more stable political climates, attracting investment and boosting GDP.
 
 ### Military Expenditure by Country
-```
-# Calculate the mean Military Expenditure by country and arrange in descending order
-df2_mean <- df2 %>%
-  group_by(country) %>%
-  summarize(mean_afp = mean(`Military Expenditure`, na.rm = TRUE)) %>%
-  arrange(desc(mean_afp))
 
-# Filter out rows with NA in polity2_category
-df2_filtered <- df2 %>%
-  filter(!is.na(polity2_category))
-
-# Create a box plot with fill based on polity2_category
-box_plot <- ggplot(data = df2_filtered, aes(x = factor(country, levels = df2_mean$country), 
-                                           y = `Military Expenditure` / 1e9,  # Convert to USD billion
-                                           fill = polity2_category)) +
-  geom_boxplot() +
-  labs(x = "Country", y = "Military Expenditure (USD billion)") +  
-  ggtitle("") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +  
-  labs(fill = "")
-
-# Print the box plot
-print(box_plot)
-```
 <img width="720" alt="1" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/61d2c03c-774c-48ab-9f7c-5345abd8185b">
 
 Countries with low Polity2 scores, indicating autocratic governance often face recurring conflicts due to their low GDP income levels leading to heightened civil unrest. The diversion of public resources exacerbates these conflicts making these nations vulnerable to insurgent groups. This necessitates substantial military spending to suppress the uprisings resulting in a decline in national well-being. Additionally, it can be observed that countries with limited food supplies also tend to allocate more funds to their military.
 
 ### Emergency Food Aid by Onset of War
 
-```
-# Filter out NA values in the "onsetwar" variable
-df2_filtered <- df2[!is.na(df2$onsetwar), ]
-
-# Create a kernel density plot with a log-scale x-axis
-kernel_density_plot <- ggplot(df2_filtered, aes(x = emergency_food_aid, fill = onsetwar)) +
-  geom_density(alpha = 0.5) +  # Add a semi-transparent density plot
-  labs(x = "Emergency Food Aid", y = "Density") +  # Set axis labels
-  ggtitle("") +  # Set plot title
-  scale_fill_manual(values = c("Yes" = "red", "No" = "blue")) +  # Define colors
-  theme_minimal() + 
-  scale_x_log10()  # Set x-axis to log scale
-
-# Print the kernel density plot
-print(kernel_density_plot)
-```
-
 <img width="720" alt="1" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/f86569cc-044d-4641-9a09-ae043615880b">
 
 
 ### Emergency Food Aid by Overall Conflict
 
-```
-# Filter out NA values in the "onsetwar" variable
-df2_filtered <- df2[!is.na(df2$overall_conflict), ]
-
-# Create a kernel density plot with a logarithmic x-axis scale
-kernel_density_plot <- ggplot(df2_filtered, aes(x = emergency_food_aid, fill = overall_conflict)) +
-  geom_density(alpha = 0.5) +  # Add a semi-transparent density plot
-  labs(x = "Emergency Food Aid", y = "Density") +  # Set axis labels
-  ggtitle("") +  # Set plot title
-  scale_fill_manual(values = c("Yes" = "red", "No" = "blue")) +  # Define colors
-  theme_minimal() + 
-  scale_x_log10()  # Set x-axis to log scale
-
-# Print the kernel density plot
-print(kernel_density_plot)
-```
 <img width="720" alt="2" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/724bd415-7694-4245-b07b-197834c838b0">
 
 The kernel density plot analysis reveals insights into the connection between emergency food assistance and armed conflict dynamics in SSA. Clustering of aid in specific SSA areas indicates vulnerability to food insecurity and associated socio-economic challenges, emphasising targeted humanitarian interventions. Moreover, as aid surpasses a threshold, the likelihood of conflict escalation increases suggesting a failure to address underlying conflict causes despite receiving food aid relief. Overlapping density curves for "Yes" and "No" conflict and onset of war categories imply complex conflict dynamics, with neighbouring regions experiencing similar aid levels exhibiting varying conflict degrees. Uneven aid allocation with some regions receiving more aid than others may heighten conflict risks, emphasising the need for fairer aid distribution to mitigate conflicts.
