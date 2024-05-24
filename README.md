@@ -43,7 +43,7 @@ library(scales)       # For scaling functions for ggplot2
 
 ### a.  Examine the Dataset
 
-As per the data [dictionary](#data-dictionary), some variables represent combined totals of distinct variables. Hence, it's crucial to consider:
+As per the data desription [dictionary](#data-dictionary), some variables represent combined totals of distinct variables. Hence, it's crucial to consider:
 
 i. "overall_conflict" equals "minor_conflict" and "major_conflict."
 
