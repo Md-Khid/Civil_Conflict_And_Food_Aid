@@ -59,10 +59,6 @@ As using these variable sets simultaneously in data exploration may hinder accur
 Converting the dataset to an R data frame yields 798 observations with 25 variables. Analysis shows most variables are numeric, except "country" noted as a character variable and "year" formatted as date and time.
 
 #### Data Types
-```
-# Provide summary of data structure
-str(df)
-```
 
 <img width="491" alt="1" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/f1ea89ea-fa0a-4e44-ade6-27649935320b">
 
