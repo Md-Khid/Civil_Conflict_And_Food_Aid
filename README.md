@@ -161,104 +161,15 @@ The kernel density plot analysis reveals insights into the connection between em
 
 ### Battle Death by Emergency Food Aid
 
-```
-# Filter out NA values in the "battle_deaths" and "emergency_food_aid" variables
-df2_filtered <- df2 %>%
-  filter(!is.na(battle_deaths) & !is.na(emergency_food_aid))
-
-# Create a scatter plot with logarithmic x-axis scale and fill points based on "polity2_category"
-correlation_plot <- ggplot(df2_filtered, aes(x = log(battle_deaths), y = emergency_food_aid, fill = polity2_category)) +
-  geom_point(shape = 21, size = 3, data = . %>% filter(log(battle_deaths) != 0)) +  # Add scatter points with custom shape and size, excluding x=0 points
-  
-  labs(x = "Log(Battle Deaths)", y = "Emergency Food Aid") +  # Set axis labels
-  ggtitle("") +  
-  theme_minimal() +  
-  scale_fill_manual(values = c("Highly Autocratic" = "red", "Moderately Autocratic" = "pink",
-                               "Neutral/Transitional" = "grey", "Moderately Democratic" = "lightblue", 
-                               "Highly Democratic" = "blue")) + 
-  guides(fill = guide_legend(title = "Polity2 Category")) +  
-  geom_rect(xmin = 3, xmax = 8, ymin = 0, ymax = 200,
-            fill = "transparent", color = "blue", alpha = 0)  # Add transparent box
-
-# Print the correlation plot
-print(correlation_plot)
-```
 <img width="720" alt="4" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/b39453ad-727c-4d93-a944-51fe10c859b7">
 
-Regardless of the quantity of emergency food assistance provided, conflicts and wars remain an inevitability. It can be seen that humanitarian aid tends to perpetuate rather than resolve conflicts in the SSA regions. Moreover, the severity of casualties resulting from such conflicts worsens when the received food aid is insufficient prompting nations to engage in warfare to secure limited emergency food supplies. These conflicts often involve autocratic countries competing with other nations, rebel leaders or supporters for control over food distribution.
+Regardless of the quantity of emergency food assistance provided, conflicts and wars remain an inevitability. It can be seen that humanitarian aid tends to perpetuate rather than resolve conflicts in the SSA regions. Moreover, the severity of casualties resulting from such conflicts worsens when the received food aid is insufficient prompting nations to engage in warfare to secure limited emergency food supplies.
 
 ### Number of Battle Deaths by Country
-```
-# Filter df2 for the year 2002
-df2_2002 <- df2[df2$year == 2002, ]
 
-# Create a basic map with a default view
-map <- leaflet() %>%
-  setView(lng = 12, lat = -8, zoom = 5) %>%
-  addTiles()
-
-# Define marker options for smaller markers
-small_marker_options <- markerOptions(radius = 3, fillOpacity = 0.7)
-
-# Iterate through the Coordinates dataset and add markers and labels for each country
-for (i in 1:nrow(Coordinates)) {
-  country_name <- Coordinates$Country[i]
-  country_lng <- Coordinates$Longitude[i]
-  country_lat <- Coordinates$Latitude[i]
-  
-  # Filter df2 for the specific country and year
-  df2_country <- df2_2002 %>%
-    filter(country == country_name)
-  
-  # Calculate the total battle deaths for the country
-  total_battle_deaths <- sum(df2_country$battle_deaths, na.rm = TRUE)
-  
-  # Check if battle deaths should be hidden
-  if (!is.na(total_battle_deaths) && total_battle_deaths > 1) {
-    
-    # Check if the country's polity2 value is within the range of 0 to -10
-    polity2_value <- df2_country$polity2[1]  # Assuming it's the same for all rows of the same country in 2002
-    if (!is.na(polity2_value) && polity2_value >= -10 && polity2_value <= 0) {
-      # Add a marker with custom color for countries in the specified polity2 range
-      map <- map %>%
-        addCircleMarkers(
-          lng = country_lng,
-          lat = country_lat,
-          radius = 10,  # Adjust the marker size
-          color = "red",  # You can customize the marker color here
-          fillOpacity = 0.7
-        )
-    } else {
-      # Add a smaller marker for countries outside the specified polity2 range
-      map <- map %>%
-        addCircleMarkers(
-          lng = country_lng,
-          lat = country_lat,
-          color = "blue",  # You can customize the marker color here
-          options = small_marker_options  # Use the smaller marker options
-        )
-    }
-    
-    # Add a label for the country with total battle deaths information displayed permanently (rounded to whole numbers)
-    label_text <- paste(country_name, ":", total_battle_deaths)
-    
-    map <- map %>%
-      addLabelOnlyMarkers(
-        lng = country_lng,
-        lat = country_lat,
-        label = label_text,
-        labelOptions = labelOptions(noHide = TRUE, direction = "auto")
-      )
-    
-  }
-}
-
-# Display the map
-map
-```
 ![12](https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/48306fba-bf4d-42b3-833b-b34175dc3671)
 
-To understand the resource-related conflicts, it is noteworthy to observe that a considerable proportion of casualties arising from armed confrontations take place in nations characterised by authoritarian governance. Among the 11 nations with the highest documented battle fatalities, a noteworthy eight belong to the category of authoritarian regimes. These nations encompass Liberia, Côte d’Ivoire, Chad, Sudan, Uganda, Somalia, Rwanda and Angola. In these particular countries, populations have frequently endured protracted periods of political oppression and violence as autocratic leaders within these nations may resort to coercive measures to sustain their control over the populace.
+To understand the resource-related conflicts, it is noteworthy to observe that a considerable proportion of casualties arising from armed confrontations take place in nations characterised by authoritarian governance. Among the 11 nations with the highest documented battle fatalities, a noteworthy eight belong to the category of authoritarian regimes. These nations encompass Liberia, Côte d’Ivoire, Chad, Sudan, Uganda, Somalia, Rwanda and Angola.
 
 ## Conclusion
 
@@ -273,8 +184,6 @@ Thirdly, nations with lower Polity2 scores often become trapped in cycles of con
 Moreover, emergency food aid allocation reveals disparities with certain regions receiving more assistance than others. Surprisingly, higher food aid levels can exacerbate conflicts especially where nation leaders manipulate distribution to maintain control. The kernel density plot underscores the intricate relationship between emergency food aid and conflict dynamics highlighting clusters of aid in vulnerable regions.
 
 Additionally, when food aid surpasses a certain threshold, conflict escalation likelihood increases suggesting that addressing food insecurity alone may not suffice. Uneven aid allocation heightens conflict risks in resource-limited regions necessitating fairer distribution strategies. In essence, autocratic governance creates an environment where aid access equates to economic and political power to exploit humanitarian assistance. Thereby, sparking disputes and internal conflicts.
-
-To address food insecurity, a comprehensive approach is imperative. Initiatives should prioritise good governance, political freedom and economic stability to break the cycle of conflict and ensure equitable resource distribution. As such, comprehensive strategies addressing root causes are crucial to minimising conflicts in the SSA region.
 
 
 
