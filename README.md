@@ -98,14 +98,7 @@ The World Development Indicators (WDI) dataset will have country names aligned w
 <img width="686" alt="5" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/a7e98a28-7bbe-4829-b323-c5cf298cd016">
 
 #### Rename variables
-```
-# Renaming columns in dataframe df2 using the pipe operator %>%
-df2 <- df2 %>%
-  rename(
-    "Military Expenditure" = MS.MIL.XPND.CD, # Renaming column MS.MIL.XPND.CD to "Military Expenditure"
-    "Prevalence of Undernourishment" = SN.ITK.DEFC.ZS # Renaming column SN.ITK.DEFC.ZS to "Prevalence of Undernourishment"
-  )
-```
+
 <img width="684" alt="6" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/eceb2413-1e28-4ded-a116-b3b01d81667b">
 
 ### f.	Missing Values
@@ -123,44 +116,11 @@ To maintain data integrity and avoid visualisation errors, missing values will b
 •	Military Expenditure (128 missing)
 
 #### Check for Missing Values
-```
-# Calculate the count of missing values for each column in df2
-df2.missingcounts <- colSums(is.na(df2))
 
-# Filter columns where the count of missing values is greater than 100
-df2.missingcounts[df2.missingcounts > 100] # not more than 100 data rows
-```
 <img width="557" alt="7" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/9f573c9e-539b-42c6-952c-727fbdf4bd3e">
 
 #### Create and Store Country Locations
-```
-# Create a data frame with coordinates for multiple countries
-Coordinates <- data.frame(
-  Country = c("Angola", "Benin", "Burkina Faso", "Burundi", "Cape Verde", "Cameroon", 
-              "Central African Republic", "Chad", "Comoros", "Republic of the Congo", 
-              "Côte d'Ivoire", "Djibouti", "Eritrea", "Eswatini", "Ethiopia", "Gambia", 
-              "Ghana", "Guinea", "Guinea-Bissau", "Kenya", "Lesotho", "Liberia",
-              "Madagascar", "Malawi", "Mali", "Mauritania", "Mozambique", "Namibia",
-              "Niger", "Nigeria", "Rwanda", "Senegal", "Sierra Leone", "Somalia",
-              "South Africa", "Sudan", "Tanzania", "Togo", "Uganda", "Zambia", "Zimbabwe",
-              "Democratic Republic of the Congo"),
-  Longitude = c(17.873887, 2.315834, -1.561593, 29.918886, -24.013197, 12.639232, 
-                21.640959, 18.731186, 43.261206, 15.827659, -5.54708, 42.590275, 
-                38.84683, 31.4659, 39.782334, -15.439505, -0.10599, -1.027727,  -15.6538,
-                37.9062, 28.2336, -9.4295, 46.869107, 34.3015, -3.9962, 20.2559, 35.5296, 
-                18.6657, 8.0817, 7.4951, 29.8739, 14.4974, -11.7922, 45.3435, -28.816623,
-                30.217636, 34.8888, 1.2126, 32.2903, 27.8493, 29.1549, -4.0383),
-  Latitude = c(-11.202692, 9.30769, 12.238333, -3.373056, 16.5388, 5.96607, 6.573778, 
-               15.454166, -11.6455, -0.228021, 7.539988, 11.748718, 15.179384, -26.5225, 
-               9.145, 13.443182, 13.443182, 7.257472, 11.8037, -1.2921, -29.609, 6.4281, 
-               -18.8792, -13.2543, 17.5707, 20.3487, -18.6657, -22.9576, 17.6078, 9.0820, 
-               -1.9403, 14.4974, 8.5636, 5.1521, -25.746111, 15.7887, -6.369028, 8.7808, 
-               1.3733, -13.1339, -17.8252, -4.0383)
-)
 
-# Print the Coordinates data frame
-print(Coordinates)
-```
 <img width="698" alt="8" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/89bb55e8-7d00-4aaa-9f6d-22d41b15088c">
 
 ## Data Findings
