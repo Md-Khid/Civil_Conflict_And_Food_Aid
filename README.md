@@ -88,32 +88,7 @@ ii. Create new variables: "total_food_aid" (sum of emergency_food_aid and non_em
 More data from the World Development Indicators (WDI) will be added to the current dataset focusing on SSA region stats like ‘MS.MIL.XPND.CD’ (Military Expenses) and ‘SN.ITK.DEFC.ZS’ (Prevalence of Undernourishment). Looking at military spending gives insights on security and checking undernourishment levels is crucial for food security which affects civil unrest potential.
 
 #### Abstract Additional Data from WDI API
-```
-# Define the list of Sub-Saharan African countries
-sub_saharan_africa_countries <- c(
-  "AO", "BJ", "BF", "BI", "CV", "CM", "CF", "TD", "KM", "CG", "CI", "DJ", "ER",
-  "SZ", "ET", "GM", "GH", "GN", "GW", "KE", "LS", "LR", "MG", "MW", "ML", "MR",
-  "MZ", "NA", "NE", "NG", "RW", "SN", "SL", "SO", "ZA", "SD", "TZ", "TG", "UG",
-  "ZM", "ZW", "CD"
-)
 
-# Define the list of indicators
-indicators <- c(
-  "MS.MIL.XPND.CD",     # Military Expenses
-  "SN.ITK.DEFC.ZS"      # Prevalence of Undernourishment
-)
-
-# Fetch WDI data for the selected indicators and countries
-wdi_data <- WDI(
-  country = sub_saharan_africa_countries,
-  indicator = indicators,
-  start = 2002,
-  end = 2020
-)
-
-# View the retrieved data
-View(wdi_data)
-```
 <img width="664" alt="5" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/07091986-c867-4cbf-bfc7-3e16a0300859">
 
 ### e.	Merging Data
@@ -121,32 +96,9 @@ View(wdi_data)
 The World Development Indicators (WDI) dataset will have country names aligned with the existing dataset for accurate identification. Years from the 'year' column in the existing dataset will be converted to integers for standardisation. Both datasets will be merged based on 'country' and 'year' columns.
 
 #### Data Transformation for Merging WDI Data
-```
-# Rename specific countries in the dataset to match common naming conventions
-wdi_data <- wdi_data %>%
-  mutate(
-    country = case_when(
-      country == "Congo, Rep." ~ "Congo",  # Change "Congo, Rep." to "Congo"
-      country == "Congo, Dem. Rep." ~ "Democratic Republic of the Congo",  # Change "Congo, Dem. Rep." to "Democratic Republic of the Congo"
-      country == "Gambia, The" ~ "Gambia",  # Change "Gambia, The" to "Gambia"
-      TRUE ~ country  # Keep other values unchanged
-    )
-  )
-```
+
 #### Convert the 'year' Column in the 'df' DataFrame to Integer and Perform Data Merging
-```
-# Convert the 'year' column in dataframe 'df' to integer type
-df$year <- as.integer(df$year)
 
-# Merge dataframe 'df' with dataframe 'wdi_data' based on the common columns 'country' and 'year', storing the result in dataframe 'df2'
-df2 <- left_join(df, wdi_data, by = c("country", "year"))
-
-# Write the merged dataframe 'df2' to a CSV file named 'df2.csv', excluding row names
-write.csv(df2, file = "df2.csv", row.names = FALSE)
-
-# Display the first few rows of the merged dataframe 'df2'
-head(df2)
-```
 
 <img width="686" alt="5" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/a7e98a28-7bbe-4829-b323-c5cf298cd016">
 
