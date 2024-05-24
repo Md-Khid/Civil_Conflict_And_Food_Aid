@@ -69,51 +69,18 @@ To make visualisation charts for the study, the study will:
 i. Convert numeric variables ('overall_conflict', 'minor_conflict', 'major_conflict', 'onsetwar', 'offsetwar' and 'polity2') into categories.
 
 #### Convert numeric variables into Categorical factors
-```
-# Convert variables to factors with "No" and "Yes" labels
-df <- df %>%
-  mutate(
-    overall_conflict = factor(overall_conflict, levels = c(0, 1), labels = c("No", "Yes")),
-    minor_conflict = factor(minor_conflict, levels = c(0, 1), labels = c("No", "Yes")),
-    major_conflict = factor(major_conflict, levels = c(0, 1), labels = c("No", "Yes")),
-    onsetwar = factor(onsetwar, levels = c(0, 1), labels = c("No", "Yes")),
-    offsetwar = factor(offsetwar, levels = c(0, 1), labels = c("No", "Yes")),
-    
-    # Create categories for "polity2" scores
-    polity2_category = cut(polity2,
-                           breaks = c(-10, -6, 0, 5, 9, 10),  # Define breaks for categorization
-                           labels = c("Highly Autocratic", "Moderately Autocratic", "Neutral/Transitional", "Moderately Democratic", "Highly Democratic"),  # Define labels for each category
-                           include.lowest = TRUE)  # Include lowest value in the first interval
-  )
 
-```
 <img width="824" alt="2" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/5e93efdd-de35-457f-a7bb-45b3a457c34a">
 
 ii. Create new variables: "total_food_aid" (sum of emergency_food_aid and non_emergency_food_aid), "percent_total_food_aid_of_total_aid" (total_food_aid divided by total_aid) and "total_gdp" (gdp_per_capita multiplied by population).
 
 #### Create New Variables
-```
-# Mutate the dataframe to calculate the total food aid by summing emergency and non-emergency food aid
-# Calculate the percentage of total food aid compared to total aid
-# Compute the total GDP by multiplying GDP per capita with population
-df <- df %>%
-  mutate(
-    total_food_aid = emergency_food_aid + non_emergency_food_aid,
-    percent_total_food_aid_of_total_aid = total_food_aid / total_aid,
-    total_gdp = gdp_per_capita * population
-  )
 
-```
 <img width="1124" alt="3" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/c8c8d84e-1485-4d43-990d-484ac231fe4c">
 
 
 #### Extract the Year from the ‘year’ Column for Data Merging 
 
-```
-# Extract the first four characters from the 'year' column and create a new column called 'year'
-df <- df %>%
-  mutate(year = substr(year, 1, 4))
-```
 <img width="668" alt="4" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/23ccd993-039c-4d5c-b35c-e09a96b78103">
 
 ### d. Additional Data Abstraction
