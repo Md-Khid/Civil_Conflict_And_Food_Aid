@@ -3,59 +3,14 @@
 ## Introduction
 
 This study explores the complex link between civil conflicts in Sub-Saharan Africa (SSA) and emergency food aid distribution. SSA with its diverse geography and socio-political dynamics, experiences recurrent conflicts driven by factors like grievances, wealth disparities and food insecurity. Food scarcity worsens conditions for conflict and hampers conflict resolution and recovery. This study aims to uncover the intricate interactions between emergency food aid and civil conflict in SSA using data from 2002 to 2020. Visualisation techniques will be used to gain insights into this relationship.
-
-## Data Dictionary
-
-The dataset studied covers SSA countries from 2002 to 2020, comprising 54 countries with various variables on conflicts, disasters, economy and politics. Below table lists the dataset variables with brief descriptions.
-
-| Variable Name       | Variable Labels                                                                 | Source                                                                                                      |
-|---------------------|--------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
-| country             | Country Name                                                                   |                                                                                                             |
-| year                | Year                                                                           |                                                                                                             |
-| overall_conflict<sup>1</sup>     | Civil conflict: =1 if more than 25 battle-related deaths, =0 if otherwise      | [Uppsala Conflict Data Program (UCDP)](https://ucdp.uu.se/)<sup>1</sup>                                                   |
-| minor_conflict<sup>1</sup>       | Civil conflict: =1 if >25 to <1000 battle-related deaths, =0 if otherwise      |                                                                                                             |
-| major_conflict<sup>1</sup>       | Civil conflict: =1 if >999 battle-related deaths, =0 if otherwise              |                                                                                                             |
-| onsetwar<sup>1</sup>             | Onset (i.e. start) of civil conflict - more than 25 battle-related deaths      |                                                                                                             |
-| offsetwar<sup>1</sup>            | Offset (i.e. end) of civil conflict - more than 25 battle-related deaths       |                                                                                                             |
-| battle_deaths<sup>1</sup>        | Number of battle-related deaths due to civil conflict                          |                                                                                                             |
-| civilian_deaths<sup>1</sup>      | Number of civilian deaths due to government attacks                           |                                                                                                             |
-| death_disasters<sup>2</sup>     | Number of deaths by natural disasters                                         | [Emergency event database (EM-DAT) by CRED](https://www.emdat.be/)<sup>2</sup>                                         |
-| injured_disasters<sup>2</sup>   | Number of injured by natural disasters                                        |                                                                                                             |
-| affected_disasters<sup>2</sup>  | Number of people requiring immediate assistance from natural disasters        |                                                                                                             |
-| homeless_disasters<sup>2</sup>  | Number of people who became homeless from natural disasters                   |                                                                                                             |
-| total_affected_disasters<sup>2</sup>      | Total number affected by natural disasters in a country                       |                                                                                                             |
-| total_affected_othercountries<sup>2</sup> | Total number affected by natural disaster in other countries                   |                                                                                                             |
-| total_affected_neighbours<sup>2</sup>     | Total number affected by disasters, immediate neighboring countries           |                                                                                                             |
-| total_affected_non_neighbours<sup>2</sup> | Total number affected by disasters, non-immediate neighboring countries       |                                                                                                             |
-| nda_other_region<sup>2</sup>              | Number of natural disaster affected people in non-Sub-Saharan African regions  |                                                                                                             |
-| emergency_food_aid<sup>3</sup>              | Emergency food aid received, in million USD                                   | [Creditor Reporting System (CRS) by OECD](https://stats.oecd.org/Index.aspx?DataSetCode=CRS1)<sup>3</sup>              |
-| non_emergency_food_aid<sup>3</sup>          | Non-humanitarian or development food aid, in million USD                      |                                                                                                             |
-| total_aid<sup>3</sup>                       | Total aid for all sectors (code 1000), constant price & in million USD        |                                                                                                             |
-| gdp_per_capita<sup>4</sup>                  | GDP per capita, PPP (constant 2011 international $)                           | [World Development Indicators](https://databank.worldbank.org/source/world-development-indicators)<sup>4</sup>           |
-| inflation<sup>4</sup>                       | Inflation, GDP deflator (annual %)                                            |                                                                                                             |
-| population<sup>4</sup>                    | Population, total                                                              |                                                                                                             |
-| polity2<sup>5</sup>                         | Polity2 score (-10 to 10), where -10 for most autocratic regime and 10 for most democratic regime | [Polity IV study database](https://www.systemicpeace.org/politystudy.html)<sup>5</sup>                              |
-
-
+                        
 ## Software Platform
 The data quality check, cleaning process and visualisation creation and analysis for this study will be conducted using the RStudio platform version 2023.06.1, Build 524.
 
 ## Set Up Working Directory and Load Data
 
-### Set Directory
-```
-# Set the root directory path 
-root.dir = "<your_directory_here>"
-```
-### Load Data
-```
-# Load readxl package for reading Excel files
-library(readxl)
+### Set Directory and Load Data
 
-# Read Excel file named "FoodAid.xlsx" and store as 'df' dataframe
-df <- read_excel("FoodAid.xlsx")
-
-```
 <img width="681" alt="1" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/617f321a-327a-46e3-a469-11fb6de24f2c">
 
 
