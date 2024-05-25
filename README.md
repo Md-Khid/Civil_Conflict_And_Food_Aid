@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This study explores the complex link between civil conflicts in Sub-Saharan Africa (SSA) and emergency food aid distribution. SSA with its diverse geography and socio-political dynamics, experiences recurrent conflicts driven by factors like grievances, wealth disparities and food insecurity. Food scarcity worsens conditions for conflict and hampers conflict resolution and recovery. This study aims to uncover the intricate interactions between emergency food aid and civil conflict in SSA using data from 2002 to 2020. Visualisation techniques will be used to gain insights into this relationship.
+This study explores the complex link between civil conflicts in Sub-Saharan Africa (SSA) and emergency food aid distribution. SSA with its diverse geography and socio-political dynamics experiences recurrent conflicts driven by factors like grievances, wealth disparities and food insecurity. Food scarcity worsens conditions for conflict and hampers conflict resolution and recovery. This study aims to uncover the intricate interactions between emergency food aid and civil conflict in SSA using data from 2002 to 2020. Visualisation techniques will be used to gain insights into this relationship.
                         
 ## Software Platform
 The data quality check, cleaning process and visualisation creation and analysis for this study will be conducted using the RStudio platform version 2023.06.1, Build 524.
@@ -56,7 +56,7 @@ As using these variable sets simultaneously in data exploration may hinder accur
 
 ### b.  Data Structure
 
-Converting the dataset to an R data frame yields 798 observations with 25 variables. Analysis shows most variables are numeric, except "country" noted as a character variable and "year" formatted as date and time.
+Converting the dataset to an R data frame yields 798 observations with 25 variables. Analysis shows most variables are numeric except "country" noted as a character variable and "year" formatted as date and time.
 
 #### Data Types
 
@@ -140,13 +140,13 @@ The scatter plot depicts SSA countries' Polity2 scores. It can be observed that 
 
 <img width="524" alt="11" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/09536caf-82ba-42f7-b92d-b79192860511">
 
-Countries with lower Polity2 scores (-10 to 0) experienced slower GDP growth from 2002 to 2020, while nations with higher scores (0 to 10) saw stronger growth. This difference may stem from limited political freedom and transparency in lower-scoring countries, discouraging people and investors. Democratic nations tend to offer more stable political climates, attracting investment and boosting GDP.
+Countries with lower Polity2 scores (-10 to 0) experienced slower GDP growth from 2002 to 2020 while nations with higher scores (0 to 10) saw stronger growth. This difference may stem from limited political freedom and transparency in lower-scoring countries, discouraging people and investors. Democratic nations tend to offer more stable political climates attracting investment and boosting GDP.
 
 ### Military Expenditure by Country
 
 <img width="720" alt="1" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/61d2c03c-774c-48ab-9f7c-5345abd8185b">
 
-Countries with low Polity2 scores, indicating autocratic governance often face recurring conflicts due to their low GDP income levels leading to heightened civil unrest. The diversion of public resources exacerbates these conflicts making these nations vulnerable to insurgent groups. This necessitates substantial military spending to suppress the uprisings resulting in a decline in national well-being. Additionally, it can be observed that countries with limited food supplies also tend to allocate more funds to their military.
+Countries with low Polity2 scores indicating autocratic governance often face recurring conflicts due to their low GDP income levels leading to heightened civil unrest. The diversion of public resources exacerbates these conflicts making these nations vulnerable to insurgent groups. This necessitates substantial military spending to suppress the uprisings resulting in a decline in national well-being. Additionally, it can be observed that countries with limited food supplies also tend to allocate more funds to their military.
 
 ### Emergency Food Aid by Onset of War
 
@@ -157,7 +157,7 @@ Countries with low Polity2 scores, indicating autocratic governance often face r
 
 <img width="720" alt="2" src="https://github.com/Md-Khid/Civil_Conflict_And_Food_Aid/assets/160820522/724bd415-7694-4245-b07b-197834c838b0">
 
-The kernel density plot analysis reveals insights into the connection between emergency food assistance and armed conflict dynamics in SSA. Clustering of aid in specific SSA areas indicates vulnerability to food insecurity and associated socio-economic challenges, emphasising targeted humanitarian interventions. Moreover, as aid surpasses a threshold, the likelihood of conflict escalation increases suggesting a failure to address underlying conflict causes despite receiving food aid relief. Overlapping density curves for "Yes" and "No" conflict and onset of war categories imply complex conflict dynamics, with neighbouring regions experiencing similar aid levels exhibiting varying conflict degrees. Uneven aid allocation with some regions receiving more aid than others may heighten conflict risks, emphasising the need for fairer aid distribution to mitigate conflicts.
+The kernel density plot analysis reveals insights into the connection between emergency food assistance and armed conflict dynamics in SSA. Clustering of aid in specific SSA areas indicates vulnerability to food insecurity and associated socio-economic challenges, emphasising targeted humanitarian interventions. Moreover, as aid surpasses a threshold, the likelihood of conflict escalation increases suggesting a failure to address underlying conflict causes despite receiving food aid relief. Overlapping density curves for "Yes" and "No" conflict and onset of war categories imply complex conflict dynamics, with neighbouring regions experiencing similar aid levels exhibiting varying conflict degrees. Uneven aid allocation with some regions receiving more aid than others may heighten conflict risks emphasising the need for fairer aid distribution to mitigate conflicts.
 
 ### Battle Death by Emergency Food Aid
 
